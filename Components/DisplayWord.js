@@ -1,20 +1,23 @@
 import React from 'react'
-import { View,Text, StyleSheet } from 'react-native'
+import { View,Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 export default function DisplayWord({word,deleteLetter}) {
-    
+
     return (
         <View style={styles.container}>
             <Text style={styles.typedWord}>{word}</Text>
-            <Text style={styles.delete} onPress={deleteLetter} >---</Text>
+            <TouchableOpacity  onPress={deleteLetter} >
+                <Text style={styles.delete}>
+                ---
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container:{
-        padding:10,
-        width:'100%',
+        overflow:"hidden",
         flex:1,
         flexDirection:'row',
         justifyContent:'space-between',
@@ -22,7 +25,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 5,
         borderBottomColor:"black",
         borderStyle:'solid',
-        paddingBottom:10,
+        padding:10,
+
     },
     typedWord:{
         paddingLeft:30,

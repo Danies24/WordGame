@@ -1,16 +1,20 @@
 import React ,{useState} from 'react'
-import { StyleSheet, Text, View} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 
 export default function WordFormed({letterTyped}) {
-    
     return (
-       
         <View style={style.row}>
             <Text style={style.word}>{letterTyped}</Text>
-             <Text style={[style.number]}>{letterTyped.length}</Text> 
-         </View>  
+            <View style={style.numberDelete}>
+                <Text style={[style.number]}>{letterTyped.length}</Text> 
+                <TouchableOpacity>
+                    <Text style={style.delete}>--</Text>
+                </TouchableOpacity>
+            </View>
+        </View>  
     )
 }
+
 const style = StyleSheet.create({
     row:{
         width:'100%',
@@ -26,15 +30,23 @@ const style = StyleSheet.create({
         borderBottomColor:"black",
         borderStyle:'dotted',
         paddingBottom:10,
-        width:'40%'
+        width:'50%'
+    },
+    numberDelete:{
+        flexDirection:'row',
+        width:"30%",
+        justifyContent:'space-around'
     },
     number:{
         color:'white',
         padding:10,
         textAlign:'center',
-        fontSize:25,
+        fontSize:20,
         backgroundColor:'#4F091D',
-        width:'10%',
-        
+    },
+    delete:{
+        fontSize:30,
+        color:'black',
     }
+
 })

@@ -34,7 +34,7 @@ export default RoundBtn;
     text:{
         color:'red',
         fontWeight:'bold',
-        fontSize:16  
+        fontSize:16,
     },
   });
   

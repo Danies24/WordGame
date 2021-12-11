@@ -14,10 +14,12 @@ import {
 export default function Header() {
     return (
         <SafeAreaView style={styles.Header}>
-          <View>
+          <View style={styles.heading}>
             <Text style={styles.One}>Give me Five</Text>
+            <Text>Danies</Text>
           </View>
-          <Progress.Bar progress={0.7} width={395} height={10} color={'red'}/>
+          
+          <Progress.Bar progress={0.1} width={395} height={15} color={'#4F091D'}/>
         </SafeAreaView>
     )
 }
@@ -26,11 +28,15 @@ const styles = StyleSheet.create({
   One: {
      marginBottom: 10,
     fontSize : 40,
-     color:'red',
+     color:'#4F091D',
      fontFamily: 'Readex Pro',
      fontWeight: '700',
   },
-  
+  heading:{
+    justifyContent:'space-between',
+    flexDirection:'row',
+    alignItems:'center'
+  },
   Header:{
     marginTop:50,
   }
