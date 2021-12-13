@@ -1,14 +1,17 @@
-import React ,{useState} from 'react'
+import React, { useState }  from 'react'
 import { StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 
-export default function WordFormed({letterTyped}) {
+export default function WordFormed({letterTyped,index,submitWord}) {
+        const wordDelete = ()=>{
+            return submitWord.splice(index,1)
+        }
     return (
         <View style={style.row}>
             <Text style={style.word}>{letterTyped}</Text>
             <View style={style.numberDelete}>
                 <Text style={[style.number]}>{letterTyped.length}</Text> 
-                <TouchableOpacity>
-                    <Text style={style.delete}>--</Text>
+                <TouchableOpacity onPress={()=>wordDelete(index)}>
+                    <Text  style={style.delete}>x</Text>
                 </TouchableOpacity>
             </View>
         </View>  

@@ -1,16 +1,13 @@
 import React,{useState} from 'react'
-import RoundBtn from './RoundBtn';
-import { SafeAreaView,View,StyleSheet, Text, Button, TouchableOpacity, Alert} from 'react-native';
+import { SafeAreaView,StyleSheet, Button, Alert} from 'react-native';
 import DisplayWord from './DisplayWord';
 import Bottom from './Bottom';
 import LettersLists from './LettersLists';
 
 
-function Middleware() {
+function Middleware({setSubmitWord,submitWord}) {
 
   const [word,setWord]=useState("");
-  const [submitWord,setSubmitWord]=useState([]);
-
 
   //Print the letters which are clicked
   const getText = (data)=>{
@@ -18,7 +15,6 @@ function Middleware() {
       return [...prevItems ,data]
     });
   }
-
 
   //Delete the letters which are clicked
   const deleteLetter=()=>{
@@ -43,20 +39,18 @@ function Middleware() {
       setSubmitWord((prevWords)=> {return [...prevWords,word]});
     }
   }
-  
-    return (
-      
-    <SafeAreaView style={styles.se}>
-      <LettersLists getText={getText}/>
-      <DisplayWord word={word} deleteLetter={deleteLetter}/>
-      <Button onPress={shotItButton} title="Shot a Word Kiddie" color="#4F091D"/>
-      <Bottom wordTyped={submitWord}/>
-    </SafeAreaView>
-  
+console.log(submitWord);
+    return ( 
+      <SafeAreaView style={styles.se}>
+        <LettersLists getText={getText}/>
+        <DisplayWord word={word} deleteLetter={deleteLetter}/>
+        <Button onPress={shotItButton} title="Kid ! Shot a Word" color="#4F091D"/>
+        <Bottom submitWord={submitWord}/>
+      </SafeAreaView>
     )
 }
 
-export default Middleware
+export default Middleware;
 const styles = StyleSheet.create({
     se:{
       flex:-1,
@@ -68,4 +62,4 @@ const styles = StyleSheet.create({
       fontSize:25,
       textAlign:'center',
     },
-  });
+});

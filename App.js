@@ -1,14 +1,16 @@
-import React from 'react';
+import React ,{useState} from 'react';
 
 import Header from './Components/Header';
 import Middleware from './Components/Middleware';
 
 
 const App= () => {
+  const [submitWord,setSubmitWord]=useState([]);
+
   return (
 <>
-      <Header/>
-      <Middleware/>
+      <Header submitWord={submitWord} setSubmitWord={setSubmitWord}/>
+      <Middleware submitWord={submitWord} setSubmitWord={setSubmitWord}/>
 </>
   );
 };
