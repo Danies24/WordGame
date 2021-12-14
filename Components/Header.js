@@ -10,8 +10,8 @@ import {
     View,
 } from 'react-native';
 
-export default function Header({handleDelete}) {
-  let arrayLength = handleDelete.length;
+export default function Header({wordArray}) {
+  let arrayLength = wordArray.length;
 let text ;
 let bar ;
 // let ratings ;
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   One: {
     fontSize : 30,
      color:'#334257',
-    //  fontFamily: 'Readex Pro',
      fontWeight: '700',
     textTransform:'uppercase',
 

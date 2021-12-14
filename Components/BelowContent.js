@@ -1,25 +1,31 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React ,{useState}from 'react'
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-export default function BelowContent({handleDelete,sethandleDelete}) {
-    const aaguma = (id)=>{
-        sethandleDelete(prevItems=>{
-          return prevItems.filter(handle => handle.id != id);
-        })
+export default function BelowContent({wordArray,setwordArray}) {
+    const [visible, sevisible] = useState(true)
+    const wordDelete = (id)=>{
+        setwordArray(prevItems=>{
+          return prevItems.filter(word => word.id != id);
+        });
+
       }
     return (
         <>
+        <View style={style.undoContainer}>
+            {/* <Text >Undo </Text> */}
+         <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
+        </View>
 
-         {  handleDelete.map((handle,index)=>
+         {  wordArray.map((word,index)=>
                 <View  key={index} style={style.container}>
                 <View style={style.row}>
 
-                    <Text style={style.word}>{handle.wordName}</Text>
-                    <RoundBtn style={[style.number]} text={handle.length}/> 
+                    <Text style={style.word}>{word.wordName}</Text>
+                    <RoundBtn style={[style.number]} text={word.length}/> 
 
-                    <TouchableOpacity onPress={()=>aaguma(handle.id)}>
+                    <TouchableOpacity onPress={()=>wordDelete(word.id)}>
                     <Text  style={style.delete}>
                         <FontAwesome5 name={'trash'} size={20} color={'#334257'}/>
                     </Text>
@@ -31,14 +37,23 @@ export default function BelowContent({handleDelete,sethandleDelete}) {
     )
 }
 const style = StyleSheet.create({
-    container:{
+    undoContainer:{
+        flex:1,
         paddingTop:20,
+
+        flexDirection:'row',
+        justifyContent:'flex-end',
+        alignItems:'center',
+        // backgroundColor:'red'
+    },
+    container:{
         width:'100%',
     },row:{
         width:'100%',
         padding:5,
         flexDirection:'row',
-        justifyContent:"space-between",alignItems:'center',
+        justifyContent:"space-between",
+        alignItems:'center',
         color:'#334257'
     },word:{
         fontSize:30,

@@ -4,7 +4,7 @@ import DisplayWord from './DisplayWord';
 import LettersLists from './LettersLists';
 
 
-function Middleware({sethandleDelete,handleDelete}) {
+function Middleware({setwordArray,wordArray}) {
 
   const [word,setWord]=useState("");
   const wordObj = {
@@ -41,7 +41,7 @@ function Middleware({sethandleDelete,handleDelete}) {
         ])
     }else{
       setWord("");      
-      sethandleDelete((prevWords)=> {return [...prevWords,wordObj]});
+      setwordArray((prevWords)=> {return [...prevWords,wordObj]});
     }
   }
 
@@ -73,16 +73,15 @@ const styles = StyleSheet.create({
       textAlign:'center',
     },
     buttonContainer:{
-      paddingTop:10,
       justifyContent:'center',
       alignItems:'center',
     },
     buttonSubmit:{
       color:'#EEEEEE',
-      height: 50, 
+      height: 40, 
       borderRadius:50,
       backgroundColor:'#548CA8',
-      width:'60%',
+      width:'70%',
       padding:13,
       fontSize:15,
       fontWeight:'800',

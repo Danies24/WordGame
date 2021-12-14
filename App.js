@@ -7,16 +7,16 @@ import Middleware from './Components/Middleware';
 
 
 const App= () => {
-  const [handleDelete, sethandleDelete] = useState([]);
+  const [wordArray, setwordArray] = useState([]);
 
 
   return (
 <ScrollView >
 <View style={style.mainContainer}>
 <View style={style.container}>
-      <Header handleDelete={handleDelete}/>
-      <Middleware  sethandleDelete={sethandleDelete} handleDelete={handleDelete}/>
-      <BelowContent handleDelete={handleDelete} sethandleDelete={sethandleDelete}/>    
+      <Header wordArray={wordArray}/>
+      <Middleware  setwordArray={setwordArray} wordArray={wordArray}/>
+      <BelowContent wordArray={wordArray} setwordArray={setwordArray}/>    
 </View>
 </View>
 </ScrollView>
