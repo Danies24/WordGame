@@ -14,7 +14,6 @@ export default function Header({wordArray}) {
   let arrayLength = wordArray.length;
 let text ;
 let bar ;
-// let ratings ;
 if (arrayLength == 1) {
   text = "Good Effort";
   bar = 0.2

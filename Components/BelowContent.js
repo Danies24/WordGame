@@ -4,34 +4,34 @@ import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default function BelowContent({wordArray,setwordArray}) {
-    const [visible, sevisible] = useState(true)
-    const wordDelete = (id)=>{
-        setwordArray(prevItems=>{
-          return prevItems.filter(word => word.id != id);
-        });
+const wordDelete = (wordObj)=>{
+    alert(wordObj.id)
+}
 
-      }
+
+
     return (
         <>
-        <View style={style.undoContainer}>
+        <View style={style.undoContainer} >
             {/* <Text >Undo </Text> */}
          <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
         </View>
 
          {  wordArray.map((word,index)=>
+         word.visible ?
                 <View  key={index} style={style.container}>
                 <View style={style.row}>
 
                     <Text style={style.word}>{word.wordName}</Text>
                     <RoundBtn style={[style.number]} text={word.length}/> 
 
-                    <TouchableOpacity onPress={()=>wordDelete(word.id)}>
+                    <TouchableOpacity onPress={()=>wordDelete(word)}>
                     <Text  style={style.delete}>
                         <FontAwesome5 name={'trash'} size={20} color={'#334257'}/>
                     </Text>
                     </TouchableOpacity>
                 </View>
-                </View>
+                </View>: <View/>
          )}
         </>
     )
