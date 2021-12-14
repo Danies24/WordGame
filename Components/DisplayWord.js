@@ -1,5 +1,6 @@
 import React from 'react'
-import { View,Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View,Text, StyleSheet, TouchableOpacity } from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default function DisplayWord({word,deleteLetter}) {
 
@@ -8,7 +9,7 @@ export default function DisplayWord({word,deleteLetter}) {
             <Text style={styles.typedWord}>{word}</Text>
             <TouchableOpacity  onPress={deleteLetter} >
                 <Text style={styles.delete}>
-                ---
+                <FontAwesome5 name={'backspace'} size={20} />
                 </Text>
             </TouchableOpacity>
         </View>
@@ -17,24 +18,22 @@ export default function DisplayWord({word,deleteLetter}) {
 
 const styles = StyleSheet.create({
     container:{
-        overflow:"hidden",
-        flex:1,
+        height:68,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        borderBottomWidth: 5,
-        borderBottomColor:"black",
-        borderStyle:'solid',
-        padding:10,
-
+        paddingBottom:5
     },
     typedWord:{
-        paddingLeft:30,
-        fontSize:30,
-        color:"black"
+        borderBottomWidth:2,
+        borderBottomColor:'#334257',
+        fontSize:25,
+        width:'100%',
+        color:"#334257",textAlign:'left'
     },
     delete:{
+        color:"#334257",  
         fontSize:30,
-        color:'black',
+        bottom:10,right:30
     }
 })

@@ -21,9 +21,9 @@ export default RoundBtn;
     roundButton: {
       width: 50,
       height: 50,
-      backgroundColor: '#fff',
+      backgroundColor: '#EEEEEE',
       borderWidth:2,
-      borderColor:'red',
+      borderColor:'#548CA8',
       justifyContent: 'center',
       alignItems: 'center',
       padding: 10,

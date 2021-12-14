@@ -1,14 +1,19 @@
 import React,{useState} from 'react'
-import { SafeAreaView,StyleSheet, Button, Alert} from 'react-native';
+import { SafeAreaView,StyleSheet, Button, Alert, TouchableOpacity, Text, View} from 'react-native';
 import DisplayWord from './DisplayWord';
-import Bottom from './Bottom';
 import LettersLists from './LettersLists';
 
 
-function Middleware({setSubmitWord,submitWord}) {
+function Middleware({sethandleDelete,handleDelete}) {
 
   const [word,setWord]=useState("");
-
+  const wordObj = {
+    visible:true,
+    wordName : word,
+    length : word.length,
+    id:Math.floor((Math.random() * 10) + 1),
+  }
+  
   //Print the letters which are clicked
   const getText = (data)=>{
     setWord(prevItems=>{
@@ -35,18 +40,23 @@ function Middleware({setSubmitWord,submitWord}) {
           }
         ])
     }else{
-      setWord("");
-      setSubmitWord((prevWords)=> {return [...prevWords,word]});
+      setWord("");      
+      sethandleDelete((prevWords)=> {return [...prevWords,wordObj]});
     }
   }
-console.log(submitWord);
+
+
     return ( 
+      <>
+
       <SafeAreaView style={styles.se}>
         <LettersLists getText={getText}/>
-        <DisplayWord word={word} deleteLetter={deleteLetter}/>
-        <Button onPress={shotItButton} title="Kid ! Shot a Word" color="#4F091D"/>
-        <Bottom submitWord={submitWord}/>
       </SafeAreaView>
+        <DisplayWord word={word} deleteLetter={deleteLetter}/>
+        <TouchableOpacity onPress={shotItButton} style={styles.buttonContainer}>
+            <Text  style={styles.buttonSubmit}>SUBMIT WORD</Text>
+        </TouchableOpacity>
+      </>
     )
 }
 
@@ -54,12 +64,28 @@ export default Middleware;
 const styles = StyleSheet.create({
     se:{
       flex:-1,
-      paddingTop:30,
+      paddingTop:15,
       flexDirection:'column',
-      height:300,
+      height:150
     },
     text:{
       fontSize:25,
       textAlign:'center',
     },
+    buttonContainer:{
+      paddingTop:10,
+      justifyContent:'center',
+      alignItems:'center',
+    },
+    buttonSubmit:{
+      color:'#EEEEEE',
+      height: 50, 
+      borderRadius:50,
+      backgroundColor:'#548CA8',
+      width:'60%',
+      padding:13,
+      fontSize:15,
+      fontWeight:'800',
+      textAlign:'center',
+    }
 });

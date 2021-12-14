@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Progress from 'react-native-progress';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {
   Alert,
@@ -9,11 +10,11 @@ import {
     View,
 } from 'react-native';
 
-export default function Header({submitWord,setSubmitWord}) {
-  let arrayLength = submitWord.length;
-  console.log(arrayLength);
+export default function Header({handleDelete}) {
+  let arrayLength = handleDelete.length;
 let text ;
 let bar ;
+// let ratings ;
 if (arrayLength == 1) {
   text = "Good Effort";
   bar = 0.2
@@ -52,39 +53,36 @@ else {
         <SafeAreaView style={styles.Header}>
           <View style={styles.heading}>
             <Text style={styles.One}>Give me Five</Text>
-            <Text style={styles.appreciation}>{text}</Text> 
-
+            <Text style={styles.appreciation}>{text}
+            </Text> 
           </View>
-          <Progress.Bar progress={bar} width={395} height={15} color={'#4F091D'}/>
+          <Progress.Bar progress={bar} width={310} height={15} color={'#548CA8'}/>
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
   One: {
-     marginBottom: 10,
-    fontSize : 40,
-     color:'#4F091D',
-     fontFamily: 'Readex Pro',
+    fontSize : 30,
+     color:'#334257',
+    //  fontFamily: 'Readex Pro',
      fontWeight: '700',
+    textTransform:'uppercase',
+
   },
   heading:{
     justifyContent:'center',
     flexDirection:'column',
     alignItems:'center'
   },
-  Header:{
-    marginTop:10,
-  },
   appreciation:{
     fontFamily: 'Readex Pro',
     fontWeight: '700',
     fontSize : 30,
-    color:'#4F091D',
-    textTransform:'uppercase',
+    color:'#334257',
     width:'100%',
     textAlign:'center',
-    paddingTop:10,
+    paddingTop:5,
     paddingBottom:10,
 }
 });
