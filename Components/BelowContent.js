@@ -30,8 +30,8 @@ const undoButton=()=>{
         </TouchableOpacity>
 
          {  wordArray.map((word,index)=>
-                word.visible ? 
-                <View  key={index} style={style.container}>
+                <View key={index}  style={style.container}>
+                {word.visible  ? 
                 <View style={style.row}>
 
                     <Text style={style.word}>{word.wordName}</Text>
@@ -42,8 +42,8 @@ const undoButton=()=>{
                         <FontAwesome5 name={'trash'} size={20} color={'#334257'}/>
                     </Text>
                     </TouchableOpacity>
-                </View> 
-                </View>: <View/>
+                </View> : <View/>}
+                </View>
          )}
         </>
     )
