@@ -2,23 +2,35 @@ import React ,{useState}from 'react'
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 export default function BelowContent({wordArray,setwordArray}) {
-const wordDelete = (wordObj)=>{
-    alert(wordObj.id)
+    const [hiddenIdArray, sethiddenIdArray] = useState([]);
+
+    //Word Delete Function
+    const wordDelete = (wordObj)=>{
+        wordArray.map(item=>item.id===wordObj.id ? item.visible=false : null)
+        sethiddenIdArray(previtems=>[...previtems,wordObj.id]);
+    }
+
+    //Undo Button Function
+const undoButton=()=>{
+    // let index0 = hiddenIdArray[0];
+    // let index1 = hiddenIdArray[1];
+    hiddenIdArray.forEach(hiddenid=>{
+        let hello = hiddenid 
+        wordArray.map(item=>item.id == hello ? item.visible=true : null)
+    })
 }
-
-
-
     return (
         <>
-        <View style={style.undoContainer} >
+        <TouchableOpacity onPress={undoButton} style={style.undoContainer} >
             {/* <Text >Undo </Text> */}
          <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
-        </View>
+        </TouchableOpacity>
 
          {  wordArray.map((word,index)=>
-         word.visible ?
+                word.visible ? 
                 <View  key={index} style={style.container}>
                 <View style={style.row}>
 
@@ -30,7 +42,7 @@ const wordDelete = (wordObj)=>{
                         <FontAwesome5 name={'trash'} size={20} color={'#334257'}/>
                     </Text>
                     </TouchableOpacity>
-                </View>
+                </View> 
                 </View>: <View/>
          )}
         </>
@@ -44,7 +56,6 @@ const style = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'flex-end',
         alignItems:'center',
-        // backgroundColor:'red'
     },
     container:{
         width:'100%',
@@ -54,7 +65,7 @@ const style = StyleSheet.create({
         flexDirection:'row',
         justifyContent:"space-between",
         alignItems:'center',
-        color:'#334257'
+        color:'#334257',
     },word:{
         fontSize:30,
         textTransform:"capitalize",
