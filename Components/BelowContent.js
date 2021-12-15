@@ -1,25 +1,21 @@
 import React ,{useState}from 'react'
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {  StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 export default function BelowContent({wordArray,setwordArray}) {
     const [hiddenIdArray, sethiddenIdArray] = useState([]);
 
     //Word Delete Function
     const wordDelete = (wordObj)=>{
-        wordArray.map(item=>item.id===wordObj.id ? item.visible=false : null)
+        wordArray.map(item=>item.id===wordObj.id ? item.visible=false: null)
         sethiddenIdArray(previtems=>[...previtems,wordObj.id]);
     }
 
     //Undo Button Function
 const undoButton=()=>{
-    // let index0 = hiddenIdArray[0];
-    // let index1 = hiddenIdArray[1];
     hiddenIdArray.forEach(hiddenid=>{
-        let hello = hiddenid 
-        wordArray.map(item=>item.id == hello ? item.visible=true : null)
+        wordArray.map(item=>item.id == hiddenid ? item.visible=true : null)
     })
 }
     return (
