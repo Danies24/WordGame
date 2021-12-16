@@ -9,7 +9,6 @@ import Middleware from './Components/Middleware';
 const App= () => {
   const [wordArray, setwordArray] = useState([]);
 
-
   return (
 <ScrollView >
 <View style={style.mainContainer}>
@@ -27,10 +26,8 @@ const style = StyleSheet.create({
   mainContainer:{
     width:'100%',
     height:'100%',
-    // backgroundColor:'yellow',
     justifyContent:'center',
     alignItems:'center',
-    // backgroundColor:'#334257',
     color:'#548CA8'
   },
   container:{

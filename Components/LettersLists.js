@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 
 export default function LettersLists({getText}) {
-    const texts1 = ['P','L','P','L','S'];
-    const texts2 = ['A','C','E','H','D'];
+    const texts1 = ['P','L','R','F','S'];
+    const texts2 = ['A','C','E','N','D'];
 
 
     return (

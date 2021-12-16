@@ -12,6 +12,7 @@ import {
 
 export default function Header({wordArray}) {
   let arrayLength = wordArray.length;
+  console.log(arrayLength);
 let text ;
 let bar ;
 if (arrayLength == 1) {
