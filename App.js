@@ -1,4 +1,3 @@
-// import 'react-native-gesture-handler';
 import React from 'react';
 import FirstPage from './Screens/HomeScreen'
 import LevelTwo from './Screens/LevelTwo';

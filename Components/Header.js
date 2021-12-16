@@ -20,9 +20,7 @@ export default function Header({wordArray,setwordArray,handlenavigation}) {
 let text ;
 let bar ;
 let count=0;
-wordArray.map(word=>word.visible=== true ? count++:null)
-
-
+wordArray.map(word=>word.visible=== true ? count++ : null)
 
 if (count === 1) {
   text = "Good Effort";
