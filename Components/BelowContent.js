@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React ,{useEffect, useState}from 'react'
+=======
+import React ,{useState,useEffect}from 'react'
+>>>>>>> 311a31c7e9fc170a2d8cfcf83a50be48577d79c8
 import {  StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -10,9 +14,10 @@ export default function BelowContent({wordArray,setwordArray}) {
     const wordDelete = (wordObj)=>{
         wordArray.map(item=>item.id===wordObj.id ? item.visible=false: null)
         sethiddenIdArray(previtems=>[...previtems,wordObj.id]);
+        
     }
-
     //Undo Button Function
+<<<<<<< HEAD
     const undoButton=()=>{
         hiddenIdArray.forEach(hiddenid=>{
             wordArray.map(item=>item.id == hiddenid ? item.visible=true : null)
@@ -20,10 +25,22 @@ export default function BelowContent({wordArray,setwordArray}) {
     setwordArray([...wordArray]);
 }
 
+=======
+   //RA
+    const undoButton=()=>{
+        hiddenIdArray.forEach(hiddenid=>{
+            
+            wordArray.map(item=>item.id == hiddenid ? item.visible=true : null)
+        })
+        setwordArray([...wordArray]);
+    }
+    // setwordArray(wordArray)
+>>>>>>> 311a31c7e9fc170a2d8cfcf83a50be48577d79c8
     return (
         <>
         
 
+<<<<<<< HEAD
             <TouchableOpacity onPress={undoButton} style={style.undoContainer} >
                 <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
             </TouchableOpacity>
@@ -31,18 +48,28 @@ export default function BelowContent({wordArray,setwordArray}) {
                 <View key={index}  style={style.container}>
                 {word.visible  ? 
                 <View style={style.row}>
+=======
+>>>>>>> 311a31c7e9fc170a2d8cfcf83a50be48577d79c8
 
-                    <Text style={style.word}>{word.wordName}</Text>
-                    <RoundBtn style={[style.number]} text={word.length}/> 
+    {  wordArray.map((word,index)=>
+           <View key={index}  style={style.container}>
+           {word.visible  ? 
+           <View style={style.row}>
 
-                    <TouchableOpacity onPress={()=>wordDelete(word)}>
-                    <Text  style={style.delete}>
-                        <FontAwesome5 name={'trash'} size={20} color={'#334257'}/>
-                    </Text>
-                    </TouchableOpacity>
-                </View> : <View/>}
-                </View>
-         )}
+               <Text style={style.word}>{word.wordName}</Text>
+               <RoundBtn style={[style.number]} text={word.length}/> 
+
+               <TouchableOpacity onPress={()=>wordDelete(word)}>
+               <Text  style={style.delete}>
+                   <FontAwesome5 name={'trash'} size={20} color={'#334257'}/>
+               </Text>
+               </TouchableOpacity>
+           </View> : <View/>}
+           </View>
+    )}
+
+
+
         </>
     )
 }
