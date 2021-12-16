@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import * as Progress from 'react-native-progress';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -11,22 +11,27 @@ import {
 } from 'react-native';
 
 export default function Header({wordArray}) {
-  let arrayLength = wordArray.length;
+  //let count = wordArray.length;
 let text ;
 let bar ;
-if (arrayLength == 1) {
+let count=0;
+wordArray.map(word=>word.visible=== true ? count++:null)
+
+
+
+if (count === 1) {
   text = "Good Effort";
   bar = 0.2
-} else if (arrayLength == 2) {
+} else if (count === 2) {
   text = "Keep Going";
   bar = 0.4;
-} else if (arrayLength == 3) {
+} else if (count === 3) {
   text = "Amazing";
   bar = 0.6;
-} else if (arrayLength == 4) {
+} else if (count === 4) {
   text = "Excellent"
   bar = 0.8
-} else if (arrayLength == 5) {
+} else if (count === 5) {
   text = "Rising Star";
   bar = 1;
   Alert.alert(
@@ -39,7 +44,7 @@ if (arrayLength == 1) {
       }
     ]);
     // setSubmitWord([]);
-} else if (arrayLength > 5) {
+} else if (count > 5) {
   text = "Ultimate"
   bar = 1
 } 
@@ -52,6 +57,7 @@ else {
         <SafeAreaView style={styles.Header}>
           <View style={styles.heading}>
             <Text style={styles.One}>Give me Five</Text>
+          
             <Text style={styles.appreciation}>{text}
             </Text> 
           </View>

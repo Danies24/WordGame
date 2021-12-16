@@ -10,7 +10,7 @@ export default function BelowContent({wordArray,setwordArray}) {
     const wordDelete = (wordObj)=>{
         wordArray.map(item=>item.id===wordObj.id ? item.visible=false: null)
         sethiddenIdArray(previtems=>[...previtems,wordObj.id]);
-        
+        setwordArray([...wordArray]); 
     }
     //Undo Button Function
    //RA

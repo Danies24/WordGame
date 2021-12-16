@@ -8,15 +8,15 @@ import Middleware from './Components/Middleware';
 
 const App= () => {
   const [wordArray, setwordArray] = useState([]);
-
+   
 
   return (
 <ScrollView >
 <View style={style.mainContainer}>
 <View style={style.container}>
-      <Header wordArray={wordArray}/>
+      <Header wordArray={wordArray} />
       <Middleware  setwordArray={setwordArray} wordArray={wordArray}/>
-      <BelowContent wordArray={wordArray} setwordArray={setwordArray}/>    
+      <BelowContent wordArray={wordArray} setwordArray={setwordArray} />    
 </View>
 </View>
 </ScrollView>
