@@ -10,9 +10,14 @@ import {
     View,
 } from 'react-native';
 
-export default function Header({wordArray}) {
-  let arrayLength = wordArray.length;
-  console.log(arrayLength);
+export default function Header({wordArray,setwordArray,handlenavigation}) {
+
+  //Restart Button Function
+  const restart = ()=>{
+    setwordArray([]);
+  }
+
+let arrayLength = wordArray.length;
 let text ;
 let bar ;
 if (arrayLength == 1) {
@@ -31,28 +36,26 @@ if (arrayLength == 1) {
   text = "Rising Star";
   bar = 1;
   Alert.alert(
+    "CONGRALUTIONS",
     "",
-    " Hurrah ! You Did It",
     [
-      {
-        text: "Lets Begin Again ",
-        style: "cancel",
-      }
-    ]);
-    // setSubmitWord([]);
+      { text: "RESTART", onPress: restart,style: "cancel" },
+      { text: "NEXT LEVEL",onPress: handlenavigation,style: "cancel" }//Onpress function is in HomeScreen
+    ]
+  );
 } else if (arrayLength > 5) {
   text = "Ultimate"
   bar = 1
 } 
 else {
-  text="let's Begin !";
+  text="Lets Start";
   bar=0;
 }
 
     return (
         <SafeAreaView style={styles.Header}>
           <View style={styles.heading}>
-            <Text style={styles.One}>Give me Five</Text>
+            {/* <Text style={styles.One}>Give me Five</Text> */}
             <Text style={styles.appreciation}>{text}
             </Text> 
           </View>

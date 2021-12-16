@@ -1,38 +1,25 @@
-import React ,{useState} from 'react';
-import {  ScrollView, StyleSheet, Text, View } from 'react-native';
-import BelowContent from './Components/BelowContent';
+// import 'react-native-gesture-handler';
+import React from 'react';
+import FirstPage from './Screens/FirstPage'
+// import LevelTwo from './Screens/LevelTwo';
 
-import Header from './Components/Header';
-import Middleware from './Components/Middleware';
+//Navigation Packages Imports 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LevelTwo from './Screens/LevelTwo';
+import { Text } from 'react-native';
+const Stack = createStackNavigator();
 
-
-const App= () => {
-  const [wordArray, setwordArray] = useState([]);
-
+export default function App() {
+  
   return (
-<ScrollView >
-<View style={style.mainContainer}>
-<View style={style.container}>
-      <Header wordArray={wordArray}/>
-      <Middleware  setwordArray={setwordArray} wordArray={wordArray}/>
-      <BelowContent wordArray={wordArray} setwordArray={setwordArray}/>    
-</View>
-</View>
-</ScrollView>
-  );
-};
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"Give Me Five - Level 1"}}/>
+      <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/>
+    </Stack.Navigator>
 
-const style = StyleSheet.create({
-  mainContainer:{
-    width:'100%',
-    height:'100%',
-    justifyContent:'center',
-    alignItems:'center',
-    color:'#548CA8'
-  },
-  container:{
-    width:'80%',
-  }
-})
+    </NavigationContainer>
+  )
+}
 
-export default App;

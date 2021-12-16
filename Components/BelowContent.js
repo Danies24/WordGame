@@ -13,19 +13,20 @@ export default function BelowContent({wordArray,setwordArray}) {
     }
 
     //Undo Button Function
-const undoButton=()=>{
-    hiddenIdArray.forEach(hiddenid=>{
-        wordArray.map(item=>item.id == hiddenid ? item.visible=true : null)
-    })
+    const undoButton=()=>{
+        hiddenIdArray.forEach(hiddenid=>{
+            wordArray.map(item=>item.id == hiddenid ? item.visible=true : null)
+        })
     setwordArray([...wordArray]);
 }
+
     return (
         <>
         
 
-                <TouchableOpacity onPress={undoButton} style={style.undoContainer} >
-                 <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
-                </TouchableOpacity>
+            <TouchableOpacity onPress={undoButton} style={style.undoContainer} >
+                <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
+            </TouchableOpacity>
          {  wordArray.map((word,index)=>
                 <View key={index}  style={style.container}>
                 {word.visible  ? 
