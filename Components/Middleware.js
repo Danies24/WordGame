@@ -13,6 +13,8 @@ function Middleware({setwordArray,wordArray}) {
     length : word.length,
     id:Math.floor((Math.random() * 100) + 1),
   }
+
+  
   //Print the letters which are clicked
   const getText = (data)=>{
     setWord(prevItems=>{

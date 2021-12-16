@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -10,26 +10,24 @@ export default function BelowContent({ wordArray, setwordArray }) {
     const wordDelete = (wordObj) => {
         wordArray.map(item => item.id === wordObj.id ? item.visible = false : null)
         sethiddenIdArray(previtems => [...previtems, wordObj.id]);
-
+        setwordArray([...wordArray]);
     }
+
     //Undo Button Function
-    //RA
     const undoButton = () => {
         hiddenIdArray.forEach(hiddenid => {
-
             wordArray.map(item => item.id == hiddenid ? item.visible = true : null)
         })
         setwordArray([...wordArray]);
     }
-    // setwordArray(wordArray)
+
     return (
         <>
+
+
             <TouchableOpacity onPress={undoButton} style={style.undoContainer} >
-                {/* <Text >Undo </Text> */}
                 <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'} />
             </TouchableOpacity>
-
-
             {wordArray.map((word, index) =>
                 <View key={index} style={style.container}>
                     {word.visible ?
@@ -46,9 +44,6 @@ export default function BelowContent({ wordArray, setwordArray }) {
                         </View> : <View />}
                 </View>
             )}
-
-
-
         </>
     )
 }
