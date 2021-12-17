@@ -1,5 +1,5 @@
 import { LETTER_CLICK } from '../constants';
-export function letterClick(letter) {
+export function letterClickAction(letter) {
 return {
 type: LETTER_CLICK,
 payload: letter

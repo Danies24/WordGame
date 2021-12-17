@@ -1,4 +1,4 @@
-import { LETTER_CLICK } from '../constants';
+import { LETTER_CLICK } from '../Constants/index';
 
 const initialState = {
 letter: ""
