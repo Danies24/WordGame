@@ -18,12 +18,11 @@ export default function App() {
      <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-        <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"Give Me Five - Level 1"}}/>
+          <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"Give Me Five - Level 1"}}/>
           <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/>
-      </Stack.Navigator>
-
+        </Stack.Navigator>
       </NavigationContainer>
-      </Provider>
+    </Provider>
   )
 }
 
