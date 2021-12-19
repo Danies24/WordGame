@@ -5,7 +5,9 @@ import LettersLists from './LettersLists';
 
 
 function Middleware({setwordArray,wordArray}) {
-
+   
+  const checker=['APPLE','PLACE','CAP','LEAD','END','RED','RACE','FACE','SALE','LAND'];
+  
   const [word,setWord]=useState("");
   const wordObj = {
     visible:true,
@@ -42,7 +44,8 @@ function Middleware({setwordArray,wordArray}) {
         ])
     }else{
       setWord("");      
-      setwordArray((prevWords)=> {return [...prevWords,wordObj]});
+      checker.map(letter=>letter===word.join('') ? setwordArray((prevWords)=> {return [...prevWords,wordObj]}):null);
+      
     }
   }
 
