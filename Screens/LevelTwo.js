@@ -1,22 +1,23 @@
 import React,{useState}from 'react'
 import {Button, Text,View,TextInput} from 'react-native'
 import {useSelector , useDispatch} from 'react-redux'
-import BelowContent from '../Components/BelowContent';
-import Header from '../Components/Header';
-import LettersLists from '../Components/LettersLists';
-import Middleware from '../Components/Middleware';
-import {reduxAction} from '../redux/action'
-function Count() {
+import {reduxAction,deleteAction,undoAction} from '../redux/action';
+
+function LevelTwo() {
     const data= useSelector((state)=>state.wordArray);
+    const HiddenId = useSelector(state => state.hiddenIdArray);
     const [text, setText] = useState('');
     const dispatch =useDispatch();
+
     const handleSubmit = ()=>{
-        dispatch(reduxAction({visible:true, wordName : text,length :text.length,id:10}));
+        dispatch(reduxAction({visible:true, wordName : text,length :text.length,id:Math.floor(Math.random() * 100 + 1)}));
         setText("");
     }
+    console.log(HiddenId);
+
     return (
         <>
-        <Middleware/>
+        <Text>{data.length}</Text>
         <View>
             <TextInput  
                 style={{height: 40}}
@@ -24,12 +25,19 @@ function Count() {
                 onChangeText={text => setText(text)}
                 defaultValue={text}
             />
-            <Button title="Submit" onPress={handleSubmit}/>
-            {data.map((item,index)=>item.visible === true ? <Text key={index} style={{fontSize:20}}>WordName : {item.wordName}, Id : {item.id}, length : {item.length}</Text>: null)}
+            <Button title="Submit" onPress={text.length != 0 ? handleSubmit:null}/>
+            <Text onPress={()=>dispatch(undoAction())}>UNDO</Text>
+            {data.map((item,index)=>item.visible === true ? 
+            <View key={index} style={{fontSize:50,flexDirection:'row',justifyContent:'space-between'}}>
+                <Text>{item.wordName}</Text>
+                <Text>{item.length}</Text>
+                <Text>{item.id}</Text>
+                <Text onPress={()=>dispatch(deleteAction(item.id))}>X</Text>
+            </View>: null)}
         </View>
         </>
         
     )
 }
 
-export default Count
+export default LevelTwo;
