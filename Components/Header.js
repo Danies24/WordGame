@@ -9,13 +9,15 @@ import {
     View,
 } from 'react-native';
 import Middleware from './Middleware';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { nextLevelAction } from '../redux/action';
 
 export default function Header({handlenavigation}) {
   const data= useSelector((state)=>state.wordArray);
+  const dispatch = useDispatch()
   // Restart Button Function
   const restart = ()=>{
-   console.log(data);
+    dispatch(nextLevelAction())
   }
   
 

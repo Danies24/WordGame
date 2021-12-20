@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 import Header from '../Components/Header';
-import { nextLevelAction, reduxAction } from '../redux/action';
+import { nextLevelAction } from '../redux/action';
 
 
 export default function HomeScreen({navigation}) {
