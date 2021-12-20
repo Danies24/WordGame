@@ -19,10 +19,9 @@ export default function App() {
     <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"Give Me Five - Level 1"}}/>
-          {/* <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/> */}
+          <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/>
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <LevelTwo/> */}
     </Provider>
   )
 }

@@ -1,26 +1,25 @@
 import React, { useState } from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native';
-import BelowContent from '../Components/BelowContent';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 import Header from '../Components/Header';
-import Middleware from '../Components/Middleware';
+import { nextLevelAction, reduxAction } from '../redux/action';
+
 
 export default function HomeScreen({navigation}) {
-    const [wordArray, setwordArray] = useState([]);
-
-    //Navigation Function For Next Level
-    const handlenavigation =()=>{
+  const data= useSelector((state)=>state.wordArray);
+  const dispatch = useDispatch()
+    const handlenavigation=()=>{
+      dispatch(nextLevelAction())
       navigation.navigate("LevelTwo");
-      setwordArray([]);
     }
-
 
   return (
   <ScrollView >
   <View style={style.mainContainer}>
   <View style={style.container}>
-        <Header wordArray={wordArray} setwordArray={setwordArray} handlenavigation={handlenavigation}/>
-        <Middleware  setwordArray={setwordArray} wordArray={wordArray}/>
-        <BelowContent wordArray={wordArray} setwordArray={setwordArray}/>    
+        <Header handlenavigation={handlenavigation}/>
   </View>
   </View>
   </ScrollView>

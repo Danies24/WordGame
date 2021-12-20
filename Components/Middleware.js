@@ -1,12 +1,18 @@
 import React,{useState} from 'react'
 import { SafeAreaView,StyleSheet, Button, Alert, TouchableOpacity, Text, View} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import BelowContent from './BelowContent';
 import DisplayWord from './DisplayWord';
 import LettersLists from './LettersLists';
+import {reduxAction} from '../redux/action';
+
 
 
 function Middleware({setwordArray,wordArray}) {
+  const data= useSelector((state)=>state.wordArray);
+  const dispatch =useDispatch();
    
-  const checker=['APPLE','PLACE','CAP','LEAD','END','RED','RACE','FACE','SALE','LAND'];
+  const checker=['APPLE','SELL','ALL','CALL','CAP','NEEDS','REELS','REEL','NEED','LEAD','END','RED','RACE','FACE','SALE','LAND','DEAD','PLACE','PACE','DELL','LENS','PALE'];
   
   const [word,setWord]=useState("");
   const wordObj = {
@@ -44,7 +50,7 @@ function Middleware({setwordArray,wordArray}) {
         ])
     }else{
       setWord("");      
-      checker.map(letter=>letter===word.join('') ? setwordArray((prevWords)=> {return [...prevWords,wordObj]}):null);
+      checker.map(letter=>letter===word.join('') ? dispatch(reduxAction({visible:true, wordName : word,length :word.length,id:Math.floor(Math.random() * 100 + 1)})):null);
       
     }
   }
@@ -60,6 +66,8 @@ function Middleware({setwordArray,wordArray}) {
         <TouchableOpacity onPress={shotItButton} style={styles.buttonContainer}>
             <Text  style={styles.buttonSubmit}>SUBMIT WORD</Text>
         </TouchableOpacity>
+        <BelowContent />    
+            
       </>
     )
 }
