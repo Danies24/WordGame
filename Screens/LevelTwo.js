@@ -15,6 +15,7 @@ function LevelTwo() {
         setText("");
     }
     console.log(HiddenId);
+    console.log(data);
 
     return (
         <>
