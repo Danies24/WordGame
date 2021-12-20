@@ -10,18 +10,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 //Store
-import store from './Redux/Store/configureStore';
+import {store} from './redux/store';
 
 export default function App() {
   
   return (
-     <Provider store={store}>
-      <NavigationContainer>
+    <Provider store={store}>
+    <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"Give Me Five - Level 1"}}/>
-          <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/>
+          {/* <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/> */}
         </Stack.Navigator>
       </NavigationContainer>
+      {/* <LevelTwo/> */}
     </Provider>
   )
 }

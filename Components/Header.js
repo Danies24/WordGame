@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import * as Progress from 'react-native-progress';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {
   Alert,
@@ -10,12 +9,12 @@ import {
     View,
 } from 'react-native';
 
-export default function Header({wordArray,setwordArray,handlenavigation}) {
+export default function Header({wordArray,handlenavigation}) {
 
   //Restart Button Function
-  const restart = ()=>{
-    setwordArray([]);
-  }
+  // const restart = ()=>{
+  //   setwordArray([]);
+  // }
 
 let text ;
 let bar ;
