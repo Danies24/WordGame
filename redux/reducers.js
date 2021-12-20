@@ -12,15 +12,15 @@ export const mainreducer = (state = initialState, action) => {
     case DELETE_WORD :
       return {
         ...state,
-        wordArray: state.wordArray.map(item=>item.id === action.payload ? item.visible=false : console.log(item.visible,item.id)),
+        wordArray:[...state.wordArray.map(item=>item.id === action.payload ? item.visible=false : console.log("Hello"))],
         hiddenIdArray: [...state.hiddenIdArray,action.payload]
-      };
-    case UNDO_WORD :
-      return {
-        ...state,
-        hiddenIdArray : state.hiddenIdArray.forEach(hiddenid=>
-          {state.wordArray.map(item=>item.id === hiddenid ? item.visible=true : null)})
-      };
+      }
+    // case UNDO_WORD :
+    //   return {
+    //     ...state,
+    //     hiddenIdArray : state.hiddenIdArray.forEach(hiddenid=>
+    //       {state.wordArray.map(item=>item.id === hiddenid ? item.visible=true : null)})
+    //   };
     default:
       return state;
   }

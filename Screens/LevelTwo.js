@@ -1,11 +1,12 @@
 import React,{useState}from 'react'
 import {Button, Text,View,TextInput} from 'react-native'
 import {useSelector , useDispatch} from 'react-redux'
+import Header from '../Components/Header';
 import {reduxAction,deleteAction,undoAction} from '../redux/action';
 
 function LevelTwo() {
-    const data= useSelector((state)=>state.wordArray);
-    const HiddenId = useSelector(state => state.hiddenIdArray);
+    let data= useSelector((state)=>state.wordArray);
+    let HiddenId = useSelector(state => state.hiddenIdArray);
     const [text, setText] = useState('');
     const dispatch =useDispatch();
 
@@ -17,6 +18,7 @@ function LevelTwo() {
 
     return (
         <>
+        {/* <Header /> */}
         <Text>{data.length}</Text>
         <View>
             <TextInput  

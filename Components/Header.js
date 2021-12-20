@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import * as Progress from 'react-native-progress';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {
   Alert,
