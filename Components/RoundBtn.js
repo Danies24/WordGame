@@ -14,7 +14,7 @@ function RoundBtn({text,fun}) {
         </View>
       </>
     )
-}
+} 
 
 export default RoundBtn;
  const styles = StyleSheet.create({

@@ -8,59 +8,65 @@ import {
     Text,
     View,
 } from 'react-native';
+import Middleware from './Middleware';
+import { useDispatch, useSelector } from 'react-redux';
+import { nextLevelAction } from '../redux/action';
 
-export default function Header({wordArray,handlenavigation}) {
+export default function Header({handlenavigation}) {
+  const data= useSelector((state)=>state.wordArray);
+  const dispatch = useDispatch()
+  // Restart Button Function
+  const restart = ()=>{
+    dispatch(nextLevelAction())
+  }
+  
 
-  //Restart Button Function
-  // const restart = ()=>{
-  //   setwordArray([]);
-  // }
-
-let text ;
+let appreciationText ;
 let bar ;
 let count=0;
-wordArray.map(word=>word.visible=== true ? count++ : null)
+data.map(word=>word.visible=== true ? count++ : null)
 
 if (count === 1) {
-  text = "Good Effort";
+  appreciationText = "Good Effort";
   bar = 0.2
 } else if (count === 2) {
-  text = "Keep Going";
+  appreciationText = "Keep Going";
   bar = 0.4;
 } else if (count === 3) {
-  text = "Amazing";
+  appreciationText = "Amazing";
   bar = 0.6;
 } else if (count === 4) {
-  text = "Excellent"
+  appreciationText = "Excellent"
   bar = 0.8
 } else if (count === 5) {
-  text = "Rising Star";
+  appreciationText = "Rising Star";
   bar = 1;
   Alert.alert(
     "CONGRALUTIONS",
     "",
     [
       { text: "RESTART", onPress: restart,style: "cancel" },
-      { text: "NEXT LEVEL",onPress: handlenavigation,style: "cancel" }//Onpress function is in HomeScreen
+      {text:"NEXT LEVEL ", onPress: handlenavigation,style:"cancel"}//Onpress function is in HomeScreen
     ]
   );
 } else if (count > 5) {
-  text = "Ultimate"
+  appreciationText = "Ultimate"
   bar = 1
 } 
 else {
-  text="Lets Start";
+  appreciationText="Lets Start";
   bar=0;
 }
 
     return (
-        <SafeAreaView style={styles.Header}>
-          <View style={styles.heading}>
-            <Text style={styles.appreciation}>{text}
-            </Text> 
-          </View>
-          <Progress.Bar progress={bar} width={310} height={15} color={'#548CA8'}/>
-        </SafeAreaView>
+      <SafeAreaView style={styles.Header}>
+      <View style={styles.heading}>
+          <Text style={styles.appreciation}>{appreciationText}
+          </Text> 
+      </View>
+      <Progress.Bar progress={bar} width={310} height={15} color={'#548CA8'}/>
+       <Middleware/>
+      </SafeAreaView>
     )
 }
 

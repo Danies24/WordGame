@@ -2,33 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteAction, undoAction } from '../redux/action';
 
 export default function BelowContent({ wordArray, setwordArray }) {
-    const [hiddenIdArray, sethiddenIdArray] = useState([]);
-
-    //Word Delete Function
-    const wordDelete = (wordObj) => {
-        wordArray.map(item => item.id === wordObj.id ? item.visible = false : null)
-        sethiddenIdArray(previtems => [...previtems, wordObj.id]);
-        setwordArray([...wordArray]);
-    }
-
-    //Undo Button Function
-    const undoButton = () => {
-        hiddenIdArray.forEach(hiddenid => {
-            wordArray.map(item => item.id == hiddenid ? item.visible = true : null)
-        })
-        setwordArray([...wordArray]);
-    }
+    const data = useSelector((state) => state.wordArray);
+    const dispatch = useDispatch();
 
     return (
         <>
 
 
-            <TouchableOpacity onPress={undoButton} style={style.undoContainer} >
+            <TouchableOpacity onPress={() => dispatch(undoAction())} style={style.undoContainer} >
                 <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'} />
             </TouchableOpacity>
-            {wordArray.map((word, index) =>
+            {data.map((word, index) =>
                 <View key={index} style={style.container}>
                     {word.visible ?
                         <View style={style.row}>
@@ -36,7 +24,7 @@ export default function BelowContent({ wordArray, setwordArray }) {
                             <Text style={style.word}>{word.wordName}</Text>
                             <RoundBtn style={[style.number]} text={word.length} />
 
-                            <TouchableOpacity onPress={() => wordDelete(word)}>
+                            <TouchableOpacity onPress={() => dispatch(deleteAction(word.id))}>
                                 <Text style={style.delete}>
                                     <FontAwesome5 name={'trash'} size={20} color={'#334257'} />
                                 </Text>
