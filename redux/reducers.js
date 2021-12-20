@@ -18,8 +18,7 @@ export const mainreducer = (state = initialState, action) => {
     case UNDO_WORD :
       return {
         ...state,
-        hiddenIdArray : state.hiddenIdArray.forEach(hiddenid=>
-          {state.wordArray.map(item=>item.id === hiddenid ? item.visible=true : null)})
+        hiddenIdArray :[...state.hiddenIdArray, state.hiddenIdArray.forEach(hiddenid=>{state.wordArray.map(item=>item.id === hiddenid ? item.visible=true : null)})]
       };
     default:
       return state;

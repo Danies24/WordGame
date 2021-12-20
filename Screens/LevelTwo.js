@@ -30,7 +30,7 @@ function LevelTwo() {
             />
             <Button title="Submit" onPress={text.length != 0 ? handleSubmit:null}/>
             <Text onPress={()=>dispatch(undoAction())}>UNDO</Text>
-            {data.map((item,index)=>item.visible === true ? 
+            {data.map((item,index)=>item.visible === true && item.wordName!="" ? 
             <View key={index} style={{fontSize:50,flexDirection:'row',justifyContent:'space-between'}}>
                 <Text>{item.wordName}</Text>
                 <Text>{item.length}</Text>
