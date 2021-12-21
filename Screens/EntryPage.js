@@ -1,13 +1,11 @@
 import React from 'react'
 import { Alert, BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import GmailSignIn from '../Components/GmailSignIn';
 
 export default function EntryPage({navigation}) {
 
-  // GoogleSignin.configure({
-  //   webClientId: '354893042307-3fp7esrmrld4f0t58sdeqg78n8voo6jg.apps.googleusercontent.com',
-  // });
+ 
     const startGame=()=>{
         navigation.navigate("FirstPage");
       }
@@ -32,7 +30,7 @@ export default function EntryPage({navigation}) {
             <TouchableOpacity style={style.buttonContainer}>
             <Text  style={style.buttonSubmit} onPress={exit}>EXIT</Text>
             </TouchableOpacity>
-            <Text>GMAIL</Text>
+            <GmailSignIn/>
         </View>
         </SafeAreaView>
     )
@@ -42,7 +40,6 @@ const style = StyleSheet.create({
         width:'100%',
         height:'100%',
         flex:1,
-        // backgroundColor:'#000B49',
         backgroundColor:"#678983",
         justifyContent:'center',
         alignItems:'center'
@@ -50,14 +47,12 @@ const style = StyleSheet.create({
     insideBox:{
         width:'90%',
         height:'40%',
-        // backgroundColor:'black',
         justifyContent:'space-around',
         alignItems:'center'
     },
     gameName:{
         fontSize:50,
         fontFamily: 'Moo Lah Lah',
-        // color:'#FFE6BC',
         color:'white',
         fontWeight:'bold',
         fontStyle:'italic',
