@@ -1,8 +1,13 @@
 import React from 'react'
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 export default function EntryPage({navigation}) {
+
+  // GoogleSignin.configure({
+  //   webClientId: '354893042307-3fp7esrmrld4f0t58sdeqg78n8voo6jg.apps.googleusercontent.com',
+  // });
     const startGame=()=>{
         navigation.navigate("FirstPage");
       }
