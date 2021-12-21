@@ -21,7 +21,7 @@ export default function HomeScreen({navigation}) {
   <View style={style.container}>
         <Header handlenavigation={handlenavigation}/>
   </View>
-  </View>
+  </View> 
   </ScrollView>
   );
 };

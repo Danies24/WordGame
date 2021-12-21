@@ -1,34 +1,34 @@
 import {redux,DELETE_WORD, UNDO_WORD, NEXT_LEVEL} from './actionTypes';
 
+
 const initialState = {
-  wordArray: [
-  //   {
-  //   visible:false,
-  //   wordName:"HHH",
-  //   length:0,
-  //   id:0
-  // }
-],
+  wordArray: [],
   hiddenIdArray: [],
+
 };
 
 export const mainreducer = (state = initialState, action) => {
+  
   switch (action.type) {
     case redux:
-      return {...state, wordArray: [...state.wordArray, action.payload]};
+      console.log(...state.wordArray)
+      return {...state, wordArray: [...state.wordArray, action.payload],
+      };
     case DELETE_WORD :
-      return {
+      return {...state,
+        wordArray:[...state.wordArray,state.wordArray.map((word,index)=>((word.id===action.payload)?(word.visible=false):console.log("null")))],
+        hiddenIdArray: [...state.hiddenIdArray,action.payload],
         
-        wordArray:[...state.wordArray,state.wordArray.map(item=>item.id === action.payload ? item.visible=false : null)],
-        hiddenIdArray: [...state.hiddenIdArray,action.payload]
       }
     case UNDO_WORD :
       return {
         ...state,
-        hiddenIdArray :[...state.hiddenIdArray, state.hiddenIdArray.forEach(hiddenid=>{state.wordArray.map(item=>item.id === hiddenid ? item.visible=true : null)})]
+        wordArray:[...state.wordArray,state.hiddenIdArray.map((hid)=>state.wordArray.map((word)=>word.id===hid?word.visible=true:console.log('null')))]
+        
+      
       };
       case NEXT_LEVEL : 
-      return {
+      return {...state,
         wordArray:[]
       }
     default:

@@ -15,13 +15,7 @@ function Middleware({setwordArray,wordArray}) {
   const checker=['APPLE','SELL','ALL','CALL','CAP','NEEDS','REELS','REEL','NEED','LEAD','END','RED','RACE','FACE','SALE','LAND','DEAD','PLACE','PACE','DELL','LENS','PALE'];
   
   const [word,setWord]=useState("");
-  const wordObj = {
-    visible:true,
-    wordName : word,
-    length : word.length,
-    id:Math.floor((Math.random() * 100) + 1),
-  }
-
+  
   
   //Print the letters which are clicked
   const getText = (data)=>{
@@ -50,7 +44,7 @@ function Middleware({setwordArray,wordArray}) {
         ])
     }else{
       setWord("");      
-      checker.map(letter=>letter===word.join('') ? dispatch(reduxAction({visible:true, wordName : word,length :word.length,id:Math.floor(Math.random() * 100 + 1)})):null);
+      checker.map(letter=>letter===word.join('') ? dispatch(reduxAction({visible:true, wordName : word.join(''),length :word.length,id:Math.floor(Math.random() * 100 + 1)})):null);
       
     }
   }
