@@ -11,10 +11,8 @@ export default function BelowContent({wordArray,setwordArray}) {
 
     return (
         <>
-        
-
-        <TouchableOpacity onPress={()=>dispatch(undoAction())} style={style.undoContainer} >
-                <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
+                <TouchableOpacity onPress={()=>dispatch(undoAction())} style={style.undoContainer} >
+                    <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'}/>
                 </TouchableOpacity>
                 {  data.map((word,index)=>
                 <View key={index}  style={style.container}>
