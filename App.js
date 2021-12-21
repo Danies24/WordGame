@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 //Screens
 import FirstPage from './Screens/HomeScreen'
 import LevelTwo from './Screens/LevelTwo';
-
+import EntryPage from './Screens/EntryPage';
 //Navigation Packages Imports 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,6 +18,7 @@ export default function App() {
     <Provider store={store}>
     <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="EntryPage" component={EntryPage} options={{headerShown: false}}/>
           <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"Give Me Five - Level 1"}}/>
           <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/>
         </Stack.Navigator>
