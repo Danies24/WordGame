@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
@@ -17,7 +17,7 @@ export default function EntryPage({navigation}) {
             "",
             [
               { text: "Cancel",style: "cancel" },
-              {text:"YES",style:"cancel"}
+              {text:"YES",onPress: () => BackHandler.exitApp(),style:"cancel"}
             ]
           );
       }
