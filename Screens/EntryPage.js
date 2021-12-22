@@ -1,31 +1,40 @@
-import React,{useEffect} from 'react';
-import { Alert, BackHandler, Button, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React,{useEffect,useState} from 'react';
+import HomeScreen from './HomeScreen'
+//import analytics from '@react-native-firebase/analytics';
+import { Alert, BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import { frontBigFontColor, frontdappa, frontFontColor, frontPageBackGroundColor } from '../Components/Colors';
 
 export default function EntryPage({navigation}) {
-
- 
- 
-
-  useEffect(()=>{
+  
     GoogleSignin.configure({
-      scopes: ['https://www.googleapis.com/auth/drive.readonly'], 
+      scopes: [], 
       webClientId: '354893042307-3fp7esrmrld4f0t58sdeqg78n8voo6jg.apps.googleusercontent.com', 
       offlineAccess: true,
       forceCodeForRefreshToken: true, 
-      profileImageSize: 120, 
+      profileImageSize: 200, 
     });
 
-   },[])
+   
+   const [changer,setChanger]=useState(false)
+   const [name,setName]=useState('')
+   const [src,setSrc]=useState("")
+  
    const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
+            const isSignedIn = await GoogleSignin.isSignedIn();
+      setSrc(userInfo.user.photo);
+      setChanger(isSignedIn);
+      setName(userInfo.user.name); 
       console.log(userInfo);
+
          } 
     catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -38,16 +47,12 @@ export default function EntryPage({navigation}) {
         // some other error happened
       }
     }
-    
-    
+
   };
- 
+    
     const startGame = ()=>{
       navigation.navigate("FirstPage");
-   
       }
-
-
       const exit=()=>{
         Alert.alert(
             "Are you sure want to exit ?",
@@ -59,6 +64,9 @@ export default function EntryPage({navigation}) {
           );
       }
     return (
+      <>
+        {!changer 
+        ? 
         <SafeAreaView style={style.mainContainer}>
         <View style={style.insideBox}>
 
@@ -77,6 +85,9 @@ export default function EntryPage({navigation}) {
             />
         </View>
         </SafeAreaView>
+        : 
+        <HomeScreen name={name} src={src}/>}
+        </>
     )
 } 
 const style = StyleSheet.create({
@@ -84,7 +95,7 @@ const style = StyleSheet.create({
         width:'100%',
         height:'100%',
         flex:1,
-        backgroundColor:"#678983",
+        backgroundColor:frontPageBackGroundColor,
         justifyContent:'center',
         alignItems:'center'
     },
@@ -97,7 +108,7 @@ const style = StyleSheet.create({
     gameName:{
         fontSize:50,
         fontFamily: 'Moo Lah Lah',
-        color:'white',
+        color:frontBigFontColor,
         fontWeight:'bold',
         fontStyle:'italic',
     },
@@ -106,10 +117,10 @@ const style = StyleSheet.create({
       },
       buttonSubmit:{
         
-        color:'black',
+        color:frontFontColor,
         height: 40, 
         borderRadius:10,
-        backgroundColor:'white',
+        backgroundColor:frontdappa,
 
         padding:8,
         fontSize:19,

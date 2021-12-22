@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { View,Text,StyleSheet,TouchableOpacity} from 'react-native';
+import { roundButtonBackgroundColor, roundButtonNumberColor } from './Colors';
 
 function RoundBtn({text,fun}) {
     return (
@@ -21,7 +22,7 @@ export default RoundBtn;
     roundButton: {
       width: 50,
       height: 50,
-      backgroundColor: '#EEEEEE',
+      backgroundColor: roundButtonBackgroundColor,
       borderWidth:2,
       borderColor:'#548CA8',
       justifyContent: 'center',
@@ -32,7 +33,7 @@ export default RoundBtn;
       borderStyle:'solid'    
     },
     text:{
-        color:'red',
+        color:roundButtonNumberColor,
         fontWeight:'bold',
         fontSize:16,
     },

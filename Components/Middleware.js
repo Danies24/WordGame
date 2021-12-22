@@ -5,6 +5,7 @@ import BelowContent from './BelowContent';
 import DisplayWord from './DisplayWord';
 import LettersLists from './LettersLists';
 import {reduxAction} from '../redux/action';
+import { submitButtonBackgroundColor, submitButtonColor } from './Colors';
 
 
 
@@ -83,10 +84,12 @@ const styles = StyleSheet.create({
       alignItems:'center',
     },
     buttonSubmit:{
-      color:'#EEEEEE',
+      color:submitButtonColor,
       height: 40, 
       borderRadius:50,
-      backgroundColor:'#548CA8',
+      backgroundColor:submitButtonBackgroundColor,
+      
+
       width:'70%',
       padding:13,
       fontSize:15,

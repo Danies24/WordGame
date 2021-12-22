@@ -1,6 +1,7 @@
 import React from 'react'
 import { View,Text, StyleSheet, TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { displayWordColor } from './Colors';
 
 export default function DisplayWord({word,deleteLetter}) {
 
@@ -26,13 +27,18 @@ const styles = StyleSheet.create({
     },
     typedWord:{
         borderBottomWidth:2,
-        borderBottomColor:'#334257',
+        
+        borderBottomColor:displayWordColor,
+        
         fontSize:25,
         width:'100%',
-        color:"#334257",textAlign:'left'
+        
+        color:displayWordColor,
+        textAlign:'left'
     },
     delete:{
-        color:"#334257",  
+        
+        color:displayWordColor,
         fontSize:30,
         bottom:10,right:30
     }

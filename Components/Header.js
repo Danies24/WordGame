@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import * as Progress from 'react-native-progress';
-
+import {appreciationColor, progressBarColor} from "../Components/Colors";
 import {
   Alert,
     SafeAreaView,
@@ -64,7 +64,7 @@ else {
           <Text style={styles.appreciation}>{appreciationText}
           </Text> 
       </View>
-      <Progress.Bar progress={bar} width={310} height={15} color={'#548CA8'}/>
+      <Progress.Bar progress={bar} width={310} height={15} color={progressBarColor}/>
        <Middleware/>
       </SafeAreaView>
     )
@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Readex Pro',
     fontWeight: '700',
     fontSize : 30,
-    color:'#334257',
+    // color:'#334257',
+    color:appreciationColor,
     width:'100%',
     textAlign:'center',
     paddingTop:5,

@@ -4,6 +4,7 @@ import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAction, undoAction } from '../redux/action';
+import { BelowContentColor } from './Colors';
 
 export default function BelowContent({ wordArray, setwordArray }) {
     const data = useSelector((state) => state.wordArray);
@@ -13,7 +14,7 @@ export default function BelowContent({ wordArray, setwordArray }) {
         <>
 
             <TouchableOpacity onPress={() => dispatch(undoAction())} style={style.undoContainer} >
-                <FontAwesome5 name={'history'} style={style.undo} size={20} color={'#334257'} />
+                <FontAwesome5 name={'history'} style={style.undo} size={20} color={BelowContentColor} />
             </TouchableOpacity>
             {data.map((word, index) =>
                 <View key={index} style={style.container}>
@@ -25,7 +26,7 @@ export default function BelowContent({ wordArray, setwordArray }) {
 
                             <TouchableOpacity onPress={() => dispatch(deleteAction(word.id))}>
                                 <Text style={style.delete}>
-                                    <FontAwesome5 name={'trash'} size={20} color={'#334257'} />
+                                    <FontAwesome5 name={'trash'} size={20} color={'#334257'} color={BelowContentColor} />
                                 </Text>
                             </TouchableOpacity>
                         </View> : <View />}
@@ -56,12 +57,12 @@ const style = StyleSheet.create({
         fontSize: 30,
         textTransform: "capitalize",
         borderBottomWidth: 2,
-        borderBottomColor: "#334257",
+        borderBottomColor: BelowContentColor,
+
         borderStyle: 'solid',
         paddingBottom: 10,
         width: '50%',
-        color: '#334257'
-
+        color: BelowContentColor
     }, numberDelete: {
         flexDirection: 'row',
         width: "30%",
