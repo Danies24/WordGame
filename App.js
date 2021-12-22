@@ -11,11 +11,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 //Store
 import {store} from './redux/store';
+// import Analytics from './Screens/Analytics';
 
 export default function App() {
   
   return (
     <Provider store={store}>
+    {/* <Analytics/> */}
     <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="EntryPage" component={EntryPage} options={{headerShown: false}}/>

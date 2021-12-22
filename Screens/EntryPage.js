@@ -1,6 +1,6 @@
-import React,{useEffect} from 'react'
-import { Alert, BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React,{useEffect} from 'react';
+// import analytics from '@react-native-firebase/analytics';
+import { Alert, BackHandler, Button, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -8,6 +8,12 @@ import {
 } from '@react-native-google-signin/google-signin';
 
 export default function EntryPage({navigation}) {
+
+ 
+  // analytics().logEvent('Screen_Name', {screen_name:"EntryPage"});//Analytics For ScreenNAme
+ 
+
+
   useEffect(()=>{
     GoogleSignin.configure({
       scopes: ['https://www.googleapis.com/auth/drive.readonly'], 
@@ -23,7 +29,8 @@ export default function EntryPage({navigation}) {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log(userInfo);
-         } catch (error) {
+         } 
+    catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -34,11 +41,17 @@ export default function EntryPage({navigation}) {
         // some other error happened
       }
     }
+    // analytics().logEvent('UserInfo',{userInfo:"user Info"});
+    
   };
  
-    const startGame=()=>{
-        navigation.navigate("FirstPage");
+    const startGame = ()=>{
+      navigation.navigate("FirstPage");
+      // analytics().logSelectContent({content_type: 'Start Button Clicked',item_id: 'start1'});
+   
       }
+
+
       const exit=()=>{
         Alert.alert(
             "Are you sure want to exit ?",
