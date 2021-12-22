@@ -1,15 +1,19 @@
-import React from 'react'
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-
-import { Text } from 'react-native'
+import React from 'react';
+import { View, Button } from 'react-native';
+import analytics from '@react-native-firebase/analytics';
 
 export default function GmailSignIn() {
-     // GoogleSignin.configure({
-  //   webClientId: '354893042307-3fp7esrmrld4f0t58sdeqg78n8voo6jg.apps.googleusercontent.com',
-  // });
-
-
-    return (
-        <Text></Text>
-    )
+  return (
+    <View>
+      <Button
+        title="Gmail"
+        onPress={async () =>
+          await analytics().logSelectContent({
+            content_type: 'Gmail Button Clicked',
+            item_id: 'abcd',
+          })
+        }
+      />
+    </View>
+  );
 }

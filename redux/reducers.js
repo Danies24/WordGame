@@ -15,8 +15,12 @@ export const mainreducer = (state = initialState, action) => {
       return {...state, wordArray: [...state.wordArray, action.payload],
       };
     case DELETE_WORD :
+      const call =(word)=>{
+        word.visible=false
+        return word
+      }
       return {...state,
-        wordArray:[...state.wordArray,state.wordArray.map((word,index)=>((word.id===action.payload)?(word.visible=false):console.log("null")))],
+        wordArray:[...state.wordArray,state.wordArray.map((word,index)=>((word.id===action.payload)?call(word):word))],
         hiddenIdArray: [...state.hiddenIdArray,action.payload],
         
       }
