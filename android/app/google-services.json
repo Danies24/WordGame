@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "354893042307-bc5e98keo81ir0qj6qrtapd6d7esg0tj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wordgame",
+            "certificate_hash": "b28b34dc8ff49760235bd1b975485f1d0ec1f5d9"
+          }
+        },
+        {
           "client_id": "354893042307-prp5k16b9r8k8srfmshn5ggahdbfovmk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
