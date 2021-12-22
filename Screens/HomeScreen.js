@@ -7,7 +7,7 @@ import Header from '../Components/Header';
 import { nextLevelAction } from '../redux/action';
 
 
-export default function HomeScreen({navigation,name,src}) {
+export default function HomeScreen({navigation}) {
   const data= useSelector((state)=>state.wordArray);
   const dispatch = useDispatch()
     
@@ -17,12 +17,8 @@ export default function HomeScreen({navigation,name,src}) {
     }
 
   return (
-  <ScrollView style={{backgroundColor:primaryColorBackgroundColor}}>
+  <ScrollView style={style.wholePage}>
   <View style={style.mainContainer}>
-    <View style={style.profileTop}>
-          <Text style={{fontSize :20,color:frontFontColor}}>Welcome {name}</Text>
-          <Image style={style.tinyLogo} source ={{uri:src}}/>
-    </View>
   <View style={style.container}>
           <Header handlenavigation={handlenavigation}/>
   </View>
@@ -32,6 +28,11 @@ export default function HomeScreen({navigation,name,src}) {
 };
 
 const style = StyleSheet.create({
+  wholePage:{
+    backgroundColor:primaryColorBackgroundColor,
+    paddingTop:35,
+    paddingBottom:35
+  },
   mainContainer:{
     width:'100%',
     height:'100%',

@@ -54,7 +54,7 @@ if (count === 1) {
   bar = 1
 } 
 else {
-  appreciationText="Lets Start";
+  appreciationText="Let's Start";
   bar=0;
 }
 
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Readex Pro',
     fontWeight: '700',
     fontSize : 30,
-    // color:'#334257',
+    textTransform:"uppercase",
     color:appreciationColor,
     width:'100%',
     textAlign:'center',

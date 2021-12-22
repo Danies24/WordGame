@@ -11,6 +11,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 //Store
 import {store} from './redux/store';
+import { frontFontColor, primaryColorBackgroundColor } from './Components/Colors';
 
 export default function App() {
   
@@ -19,11 +20,32 @@ export default function App() {
     <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="EntryPage" component={EntryPage} options={{headerShown: false}}/>
-          <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"Give Me Five - Level 1"}}/>
-          <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2"}}/>
+          <Stack.Screen name="FirstPage" component={FirstPage} options={{title:"LEVEL 1",
+          headerStyle: {
+            backgroundColor: primaryColorBackgroundColor,
+          },
+          headerTintColor: frontFontColor,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerShadowVisible: false,
+          headerTitleAlign: 'center'
+          }}/>
+          <Stack.Screen name="LevelTwo" component={LevelTwo} options={{title:"Level 2",
+          headerStyle: {
+            backgroundColor: primaryColorBackgroundColor,
+          },
+          headerTintColor: frontFontColor,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerShadowVisible: false,
+          headerTitleAlign: 'center'
+          }}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   )
 }
 
+ 

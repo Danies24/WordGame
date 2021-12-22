@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteAction, undoAction } from '../redux/action';
-import { BelowContentColor } from './Colors';
+import { deleteAction, undoAction ,nextLevelAction} from '../redux/action';
+import { BelowContentColor, frontBigFontColor } from './Colors';
 
 export default function BelowContent({ wordArray, setwordArray }) {
     const data = useSelector((state) => state.wordArray);
@@ -17,7 +17,7 @@ export default function BelowContent({ wordArray, setwordArray }) {
                 <FontAwesome5 name={'history'} style={style.undo} size={20} color={BelowContentColor} />
             </TouchableOpacity>
             {data.map((word, index) =>
-                <View key={index} style={style.container}>
+                <ScrollView key={index} style={style.container}>
                     {word.visible ?
                         <View style={style.row}>
 
@@ -30,8 +30,12 @@ export default function BelowContent({ wordArray, setwordArray }) {
                                 </Text>
                             </TouchableOpacity>
                         </View> : <View />}
-                </View>
+                </ScrollView>
             )}
+            
+            <TouchableOpacity onPress={()=>dispatch(nextLevelAction())} style={style.buttonContainer}>
+            <Text  style={style.nextLevel}>RESTART</Text>
+            </TouchableOpacity>
         </>
     )
 }
@@ -46,6 +50,7 @@ const style = StyleSheet.create({
     },
     container: {
         width: '100%',
+        // height:'100%'
     }, row: {
         width: '100%',
         padding: 5,
@@ -68,5 +73,22 @@ const style = StyleSheet.create({
         width: "30%",
         justifyContent: 'space-around'
     },
+    buttonContainer:{
+        justifyContent:'center',
+        alignItems:'center',
+        paddingTop:'20%',
+        paddingBottom:"20%"
+      },
+      nextLevel:{
+        height: 45, 
+        borderRadius:50,
+        backgroundColor:BelowContentColor,
+        color:frontBigFontColor,
+        width:'70%',
+        padding:13,
+        fontSize:15,
+        fontWeight:'800',
+        textAlign:'center',
+      }
 
 })
