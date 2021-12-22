@@ -1,10 +1,41 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Alert, BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import GmailSignIn from '../Components/GmailSignIn';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
 export default function EntryPage({navigation}) {
+  useEffect(()=>{
+    GoogleSignin.configure({
+      scopes: ['https://www.googleapis.com/auth/drive.readonly'], 
+      webClientId: '354893042307-3fp7esrmrld4f0t58sdeqg78n8voo6jg.apps.googleusercontent.com', 
+      offlineAccess: true,
+      forceCodeForRefreshToken: true, 
+      profileImageSize: 120, 
+    });
 
+   },[])
+   const signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log(userInfo);
+         } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
  
     const startGame=()=>{
         navigation.navigate("FirstPage");
@@ -30,7 +61,12 @@ export default function EntryPage({navigation}) {
             <TouchableOpacity style={style.buttonContainer}>
             <Text  style={style.buttonSubmit} onPress={exit}>EXIT</Text>
             </TouchableOpacity>
-            <GmailSignIn/>
+            <GoogleSigninButton
+              style={{ width: 192, height: 48 }}
+              size={GoogleSigninButton.Size.Wide}
+              color={GoogleSigninButton.Color.Dark}
+              onPress={signIn}
+            />
         </View>
         </SafeAreaView>
     )
