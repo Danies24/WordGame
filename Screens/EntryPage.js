@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react'
 import { Alert, BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import GmailSignIn from '../Components/GmailSignIn';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -70,7 +69,7 @@ export default function EntryPage({navigation}) {
         </View>
         </SafeAreaView>
     )
-}
+} 
 const style = StyleSheet.create({
     mainContainer:{
         width:'100%',
