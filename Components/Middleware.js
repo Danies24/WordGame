@@ -5,7 +5,6 @@ import BelowContent from './BelowContent';
 import DisplayWord from './DisplayWord';
 import LettersLists from './LettersLists';
 import {reduxAction} from '../redux/action';
-// import analytics from '@react-native-firebase/analytics';
 
 
 
@@ -46,10 +45,7 @@ function Middleware({setwordArray,wordArray}) {
     }else{
       setWord("");      
       checker.map(letter=>letter===word.join('') ? dispatch(reduxAction({visible:true, wordName : word.join(''),length :word.length,id:Math.floor(Math.random() * 100 + 1)})):null);
-      // analytics().logSelectContent({
-      //   content_type: 'word Submitted',
-      //   item_id: "Word1",
-      // });
+      
     }
   }
 

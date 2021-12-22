@@ -1,5 +1,4 @@
 import React,{useEffect} from 'react';
-import analytics from '@react-native-firebase/analytics';
 import { Alert, BackHandler, Button, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import {
   GoogleSignin,
@@ -10,9 +9,7 @@ import {
 export default function EntryPage({navigation}) {
 
  
-  // analytics().logEvent('Screen_Name', {screen_name:"EntryPage"});//Analytics For ScreenNAme
  
-
 
   useEffect(()=>{
     GoogleSignin.configure({
@@ -41,13 +38,12 @@ export default function EntryPage({navigation}) {
         // some other error happened
       }
     }
-    // analytics().logEvent('UserInfo',{userInfo:"user Info"});
+    
     
   };
  
     const startGame = ()=>{
       navigation.navigate("FirstPage");
-      // analytics().logSelectContent({content_type: 'Start Button Clicked',item_id: 'start1'});
    
       }
 
@@ -79,7 +75,6 @@ export default function EntryPage({navigation}) {
               color={GoogleSigninButton.Color.Dark}
               onPress={signIn}
             />
-            {/* <Button title='Analytics Check' onPress={realtimeLogContent}/> */}
         </View>
         </SafeAreaView>
     )
