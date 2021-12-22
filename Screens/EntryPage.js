@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-// import analytics from '@react-native-firebase/analytics';
+import analytics from '@react-native-firebase/analytics';
 import { Alert, BackHandler, Button, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import {
   GoogleSignin,
@@ -79,6 +79,7 @@ export default function EntryPage({navigation}) {
               color={GoogleSigninButton.Color.Dark}
               onPress={signIn}
             />
+            {/* <Button title='Analytics Check' onPress={realtimeLogContent}/> */}
         </View>
         </SafeAreaView>
     )
