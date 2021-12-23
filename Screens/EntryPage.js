@@ -106,7 +106,7 @@ export default function EntryPage({navigation}) {
                 <Text  style={style.buttonSubmit}>START GAME</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={style.buttonContainer} onPress={profile}>
-                <Text  style={style.buttonSubmit}>PROFILE</Text>
+                <Text  style={style.buttonSubmit}>MY PROFILE</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={style.buttonContainer}>
                 <Text  style={style.buttonSubmit} onPress={exit}>EXIT</Text>
