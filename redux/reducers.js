@@ -19,8 +19,10 @@ export const mainreducer = (state = initialState, action) => {
         word.visible=false
         return word
       }
+      let newWordArray=state.wordArray.map((word,index)=>((word.id===action.payload)?(call(word)):word))
+      console.log(newWordArray);
       return {...state,
-        wordArray:[...state.wordArray,state.wordArray.map((word,index)=>((word.id===action.payload)?call(word):word))],
+        wordArray: newWordArray,
         hiddenIdArray: [...state.hiddenIdArray,action.payload],
         
       }
