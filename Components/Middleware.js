@@ -6,15 +6,18 @@ import DisplayWord from './DisplayWord';
 import LettersLists from './LettersLists';
 import {reduxAction} from '../redux/action';
 import { BelowContentColor, frontBigFontColor, submitButtonBackgroundColor, submitButtonColor } from './Colors';
+import { Level1, Level2 } from './TotalData';
 
 
 
 function Middleware({setwordArray,wordArray}) {
   const data= useSelector((state)=>state.wordArray);
   const dispatch =useDispatch();
-   
-  const checker=['APPLE','SELL','ALL','CALL','CAP','NEEDS','REELS','REEL','NEED','LEAD','END','RED','RACE','FACE','SALE','LAND','DEAD','PLACE','PACE','DELL','LENS','PALE'];
-  
+
+  const nameOfLevelData = useSelector(state=>state.nameOfLevel);
+    let checker;
+    nameOfLevelData == "LevelTwo" ? checker=Level2: checker=Level1 ;
+     
   const [word,setWord]=useState("");
   
   
@@ -45,7 +48,7 @@ function Middleware({setwordArray,wordArray}) {
         ])
     }else{
       setWord("");      
-      checker.map(letter=>letter===word.join('') ? dispatch(reduxAction({visible:true, wordName : word.join(''),length :word.length,id:Math.floor(Math.random() * 100 + 1)})):null);
+      checker.CorrectWords.map(letter=>letter===word.join('') ? dispatch(reduxAction({visible:true, wordName : word.join(''),length :word.length,id:Math.floor(Math.random() * 100 + 1)})):null);
       
     }
   }

@@ -1,11 +1,11 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View,Text,Image } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import {frontFontColor, primaryColorBackgroundColor} from "../Components/Colors";
+import {primaryColorBackgroundColor} from "../Components/Colors";
 import analytics from "@react-native-firebase/analytics"
 
 import Header from '../Components/Header';
-import { nextLevelAction } from '../redux/action';
+import { levelNameAction, nextLevelAction } from '../redux/action';
 
 
 export default function HomeScreen({navigation}) {
@@ -21,7 +21,7 @@ export default function HomeScreen({navigation}) {
     
   const handlenavigation=()=>{
       dispatch(nextLevelAction())
-      navigation.navigate("LevelTwo");
+      navigation.navigate("LevelTwo",{ name: 'LevelTwo' });
       analytics().logLevelUp({
         level:2,
         character:"Level 2"

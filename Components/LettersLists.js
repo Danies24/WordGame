@@ -1,21 +1,26 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import RoundBtn from './RoundBtn';
+import {Level1, Level2} from "./TotalData";
 
 export default function LettersLists({getText}) {
-    const texts1 = ['P','L','R','F','S'];
-    const texts2 = ['A','C','E','N','D'];
+
+    
+    const data = useSelector(state=>state.nameOfLevel);
+    let levelName;
+    data == "LevelTwo" ? levelName=Level2 : levelName=Level1 ;
 
 
     return (
     <>
         <View style={styles.middleware}>
-            { texts1.map((text,index)=>
+            { levelName.TopLetters.map((text,index)=>
             <RoundBtn fun={getText} key={index} text={text}/>
             )}
         </View>
         <View style={styles.middleware}>
-            { texts2.map((text,index)=>
+            { levelName.BottomLetters.map((text,index)=>
             <RoundBtn fun={getText} key={index} text={text}/>
             )}
         </View>

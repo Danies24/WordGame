@@ -59,7 +59,7 @@ export default function EntryPage({navigation}) {
       !changer ? 
       alert("Sign In and Continue !")
       :
-      navigation.navigate("FirstPage");
+      navigation.navigate("FirstPage",{ name: 'FirstPage' });
       analytics().logLevelStart({
         level:1
       })

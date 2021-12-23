@@ -1,17 +1,16 @@
-import {redux,DELETE_WORD, UNDO_WORD, NEXT_LEVEL} from './actionTypes';
+import {redux,DELETE_WORD, UNDO_WORD, NEXT_LEVEL, LEVEL_NAME} from './actionTypes';
 
 
 const initialState = {
   wordArray: [],
   hiddenIdArray: [],
-
+  nameOfLevel:""
 };
 
 export const mainreducer = (state = initialState, action) => {
   
   switch (action.type) {
     case redux:
-      
       return {...state, wordArray: [...state.wordArray, action.payload],
       };
     case DELETE_WORD :
@@ -36,7 +35,13 @@ export const mainreducer = (state = initialState, action) => {
       case NEXT_LEVEL : 
       return {...state,
         wordArray:[]
-      }
+      };
+      case LEVEL_NAME :
+        console.log(state.nameOfLevel);
+        return {
+          ...state,
+          nameOfLevel:action.payload
+        }
     default:
       return state;
   }

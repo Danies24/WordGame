@@ -1,21 +1,21 @@
-import React,{useState}from 'react'
-import {Button, Text,View,StyleSheet, ScrollView, Alert, TouchableOpacity} from 'react-native'
-import {useSelector , useDispatch} from 'react-redux'
+import React from 'react'
+import {View,StyleSheet, ScrollView} from 'react-native'
+import {useDispatch} from 'react-redux'
 import { primaryColorBackgroundColor } from '../Components/Colors';
 import Header from '../Components/Header';
 import analytics from "@react-native-firebase/analytics"
+import { levelNameAction } from '../redux/action';
 
 
-function LevelTwo() {
+function LevelTwo({route}) {
+  const dispatch = useDispatch();
+  dispatch(levelNameAction(route.params.name));
+
   analytics().logScreenView({
     screen_class:"LevelTwo",
     screen_name:"LevelTwo"
   })
 
-
-
-    const data= useSelector((state)=>state.wordArray);
-    const dispatch = useDispatch();
     return (
         <>
         <ScrollView style={style.wholePage}>
