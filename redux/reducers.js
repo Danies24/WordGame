@@ -20,7 +20,7 @@ export const mainreducer = (state = initialState, action) => {
         return word
       }
       let newWordArray=state.wordArray.map((word,index)=>((word.id===action.payload)?(call(word)):word))
-      console.log(newWordArray);
+      
       return {...state,
         wordArray: newWordArray,
         hiddenIdArray: [...state.hiddenIdArray,action.payload],
