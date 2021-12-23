@@ -11,7 +11,7 @@ export const mainreducer = (state = initialState, action) => {
   
   switch (action.type) {
     case redux:
-      console.log(...state.wordArray)
+      
       return {...state, wordArray: [...state.wordArray, action.payload],
       };
     case DELETE_WORD :
@@ -27,7 +27,7 @@ export const mainreducer = (state = initialState, action) => {
     case UNDO_WORD :
       return {
         ...state,
-        wordArray:[...state.wordArray,state.hiddenIdArray.map((hid)=>state.wordArray.map((word)=>word.id===hid?word.visible=true:console.log('null')))]
+        wordArray:[...state.wordArray,state.hiddenIdArray.map((hid)=>state.wordArray.map((word)=>word.id===hid?word.visible=true:null))]
         
       
       };

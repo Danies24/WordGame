@@ -2,18 +2,30 @@ import React from 'react'
 import { ScrollView, StyleSheet, View,Text,Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import {frontFontColor, primaryColorBackgroundColor} from "../Components/Colors";
+import analytics from "@react-native-firebase/analytics"
 
 import Header from '../Components/Header';
 import { nextLevelAction } from '../redux/action';
 
 
 export default function HomeScreen({navigation}) {
+  analytics().logScreenView({
+    screen_class:"HomeScreen",
+    screen_name:"HomeScreen"
+  })
+
+
+
   const data= useSelector((state)=>state.wordArray);
   const dispatch = useDispatch()
     
   const handlenavigation=()=>{
       dispatch(nextLevelAction())
       navigation.navigate("LevelTwo");
+      analytics().logLevelUp({
+        level:2,
+        character:"Level 2"
+      })
     }
 
   return (

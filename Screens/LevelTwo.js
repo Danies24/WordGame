@@ -1,11 +1,19 @@
 import React,{useState}from 'react'
-import {Button, Text,View,TextInput, SafeAreaView, StyleSheet, ScrollView, Alert, TouchableOpacity} from 'react-native'
+import {Button, Text,View,StyleSheet, ScrollView, Alert, TouchableOpacity} from 'react-native'
 import {useSelector , useDispatch} from 'react-redux'
 import { primaryColorBackgroundColor } from '../Components/Colors';
 import Header from '../Components/Header';
+import analytics from "@react-native-firebase/analytics"
 
 
 function LevelTwo() {
+  analytics().logScreenView({
+    screen_class:"LevelTwo",
+    screen_name:"LevelTwo"
+  })
+
+
+
     const data= useSelector((state)=>state.wordArray);
     const dispatch = useDispatch();
     return (

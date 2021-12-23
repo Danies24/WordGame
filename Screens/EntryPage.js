@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import HomeScreen from './HomeScreen'
+import analytics from "@react-native-firebase/analytics"
 import { Alert, BackHandler, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {
@@ -11,6 +11,10 @@ import { frontBigFontColor, frontdappa, frontFontColor, frontPageBackGroundColor
 
 export default function EntryPage({navigation}) {
   
+  analytics().logScreenView({
+    screen_class:"EntryPage",
+    screen_name:"EntryPage"
+  })
     GoogleSignin.configure({
       scopes: [], 
       webClientId: '354893042307-3fp7esrmrld4f0t58sdeqg78n8voo6jg.apps.googleusercontent.com', 
@@ -31,8 +35,11 @@ export default function EntryPage({navigation}) {
       const isSignedIn = await GoogleSignin.isSignedIn();
       setUserEmail(userInfo.user.email);
       setChanger(isSignedIn);
-      setUserName(userInfo.user.userName); 
-      console.log(userInfo.user.userName,userInfo.user.email);
+      setUserName(userInfo.user.name); 
+      console.log(userInfo.user);
+      analytics().logLogin({
+        method:"gmail.com"
+      })
     } 
     catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -53,9 +60,16 @@ export default function EntryPage({navigation}) {
       alert("Sign In and Continue !")
       :
       navigation.navigate("FirstPage");
+      analytics().logLevelStart({
+        level:1
+      })
       }
+
+      
       const profile = ()=>{
-        console.log("Name of User :" +userName,"User Email Id"+ userEmail);
+        console.log("Profile Details");
+        console.log("Name of the user : "+userName);
+        console.log(" User Email : "+userEmail);
       }
     const exit=()=>{
         Alert.alert(

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -9,7 +9,6 @@ import { BelowContentColor, frontBigFontColor } from './Colors';
 export default function BelowContent({ wordArray, setwordArray }) {
     const data = useSelector((state) => state.wordArray);
     const dispatch = useDispatch();
-
     return (
         <>
 
@@ -32,10 +31,13 @@ export default function BelowContent({ wordArray, setwordArray }) {
                         </View> : <View />}
                 </ScrollView>
             )}
+            {data.length > 0 ? 
             
-            <TouchableOpacity onPress={()=>dispatch(nextLevelAction())} style={style.buttonContainer}>
-            <Text  style={style.nextLevel}>RESTART</Text>
-            </TouchableOpacity>
+                <TouchableOpacity onPress={()=>dispatch(nextLevelAction())} style={style.buttonContainer}>
+                <Text  style={style.nextLevel}>RESTART</Text>
+                </TouchableOpacity>
+            : <View/>
+            }
         </>
     )
 }
@@ -50,7 +52,7 @@ const style = StyleSheet.create({
     },
     container: {
         width: '100%',
-        // height:'100%'
+        
     }, row: {
         width: '100%',
         padding: 5,
