@@ -36,7 +36,6 @@ export default function EntryPage({navigation}) {
       setUserEmail(userInfo.user.email);
       setChanger(isSignedIn);
       setUserName(userInfo.user.name); 
-      console.log(userInfo.user);
       analytics().logLogin({
         method:"gmail.com"
       })

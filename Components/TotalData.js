@@ -6,5 +6,5 @@ export const Level1 = {
 export const Level2 = {
     BottomLetters : ['N','T','E','O','I'],
     TopLetters : ['R','S','A','V','X'],
-    CorrectWords:['RAT','TAT','TEXT','TEN','RAN','AXE','TOE','EAT','VAN','SAT','TORE','OXE','TENNIS','SIT','SIN','TAN','TENT','TIER','ON','NO','VEIN','SAINT','ANT','OTT']
+    CorrectWords:['RAT','TAT','TEXT','TEN','RAN','AXE','TOE','EAT','VAN','SAT','TORE','OXE','TENNIS','SIT','SIN','TAN','TENT','TIER','ON','NO','VEIN','SAINT','ANT','OTT','REST','ROAST','TOAST','VEST','NEST','TEST','SET','OATS']
 }

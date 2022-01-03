@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteAction, undoAction ,nextLevelAction} from '../redux/action';
 import { BelowContentColor, frontBigFontColor } from './Colors';
 
-export default function BelowContent({ wordArray, setwordArray }) {
+export default function BelowContent() {
     const data = useSelector((state) => state.wordArray);
     const dispatch = useDispatch();
     return (
