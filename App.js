@@ -4,6 +4,8 @@ import {Provider} from 'react-redux';
 import FirstPage from './Screens/HomeScreen'
 import LevelTwo from './Screens/LevelTwo';
 import EntryPage from './Screens/EntryPage';
+import Profile from './Screens/Profile';
+import Payment from './Screens/Payment';
 
 //Navigation Packages Imports 
 import { NavigationContainer } from '@react-navigation/native';
@@ -64,7 +66,7 @@ function App() {
           headerTitleAlign: 'center'
           }}/>
           <Stack.Screen name="My Profile" component={Profile} />
-          <Stack.Screen name="Payment" component={Paymen} />
+          <Stack.Screen name="Payment" component={Payment} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -8,7 +8,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import { frontBigFontColor, frontdappa, frontFontColor, frontPageBackGroundColor, primaryColorBackgroundColor } from '../Components/Colors';
-
+ export let userdetails=[];
 export default function EntryPage({navigation}) {
   
   analytics().logScreenView({
@@ -27,15 +27,19 @@ export default function EntryPage({navigation}) {
    const [changer,setChanger]=useState(false)
    const [userName,setUserName]=useState('')
    const [userEmail,setUserEmail]=useState("")
-  
+
    const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
+      userdetails=userInfo.user
+      // console.log(userdetails)
       const isSignedIn = await GoogleSignin.isSignedIn();
+      console.log(isSignedIn)
       setUserEmail(userInfo.user.email);
       setChanger(isSignedIn);
       setUserName(userInfo.user.name); 
+      console.log(userInfo.user);
       analytics().logLogin({
         method:"gmail.com"
       })
@@ -58,7 +62,7 @@ export default function EntryPage({navigation}) {
       !changer ? 
       alert("Sign In and Continue !")
       :
-      navigation.navigate("FirstPage",{ name: 'FirstPage' });
+      navigation.navigate("FirstPage");
       analytics().logLevelStart({
         level:1
       })
@@ -66,9 +70,10 @@ export default function EntryPage({navigation}) {
 
       
       const profile = ()=>{
-        console.log("Profile Details");
-        console.log("Name of the user : "+userName);
-        console.log(" User Email : "+userEmail);
+        navigation.navigate("My Profile");
+      }
+      const Payment=()=>{
+        navigation.navigate('Payment')
       }
     const exit=()=>{
         Alert.alert(
@@ -80,6 +85,7 @@ export default function EntryPage({navigation}) {
             ]
           );
       }
+      
       const image = require("../Images/gradient_2.png")
     return (
       <>        
@@ -105,7 +111,10 @@ export default function EntryPage({navigation}) {
                 <Text  style={style.buttonSubmit}>START GAME</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={style.buttonContainer} onPress={profile}>
-                <Text  style={style.buttonSubmit}>MY PROFILE</Text>
+                <Text  style={style.buttonSubmit}>PROFILE</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={style.buttonContainer} onPress={Payment}>
+                <Text  style={style.buttonSubmit}>PAYMENT</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={style.buttonContainer}>
                 <Text  style={style.buttonSubmit} onPress={exit}>EXIT</Text>
@@ -180,3 +189,4 @@ const style = StyleSheet.create({
         textAlign:'center',
       }
 })
+
