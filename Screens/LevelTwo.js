@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,StyleSheet, ScrollView} from 'react-native'
+import {View,StyleSheet, ScrollView, ImageBackground} from 'react-native'
 import {useDispatch} from 'react-redux'
 import { primaryColorBackgroundColor } from '../Components/Colors';
 import Header from '../Components/Header';
@@ -18,13 +18,11 @@ function LevelTwo({route}) {
 
     return (
         <>
-        <ScrollView style={style.wholePage}>
-        <View style={style.mainContainer}>
-        <View style={style.container}>
-            <Header/>
-        </View>
-        </View>
-        </ScrollView>
+        <ImageBackground source={{uri:'https://cdn.pixabay.com/photo/2020/02/26/19/15/life-is-a-circle-4882586__340.jpg'}} style={style.wholePage}>
+          <View style={style.mainContainer}>
+          <Header />
+          </View>
+        </ImageBackground>
         </>
         
     )
@@ -34,16 +32,15 @@ export default LevelTwo;
 
 const style = StyleSheet.create({
   wholePage:{
-    backgroundColor:primaryColorBackgroundColor,
-    paddingTop:15
+    paddingTop:35,
+    paddingBottom:35,
+    justifyContent:'center',
+    alignItems:'center',
   },
-    mainContainer:{
-      width:'100%',
-      height:'100%',
-      justifyContent:'center',
-      alignItems:'center',
-      color:'#548CA8'
-    },
+  mainContainer:{
+    width:'80%',
+    height:'100%',
+  },
     container:{
       width:'80%',
     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ImageBackground, ScrollView, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import {primaryColorBackgroundColor} from "../Components/Colors";
 import analytics from "@react-native-firebase/analytics"
@@ -29,31 +29,26 @@ export default function HomeScreen({navigation}) {
     }
 
   return (
-  <ScrollView style={style.wholePage}>
+    <ImageBackground source={{uri:'https://cdn.pixabay.com/photo/2020/02/26/19/15/life-is-a-circle-4882586__340.jpg'}} style={style.wholePage}>
   <View style={style.mainContainer}>
-  <View style={style.container}>
           <Header handlenavigation={handlenavigation}/>
   </View>
-  </View> 
-  </ScrollView>
+  </ImageBackground>
   );
 };
 
 const style = StyleSheet.create({
   wholePage:{
-    backgroundColor:primaryColorBackgroundColor,
     paddingTop:35,
-    paddingBottom:35
-  },
-  mainContainer:{
-    width:'100%',
-    height:'100%',
+    paddingBottom:35,
     justifyContent:'center',
     alignItems:'center',
   },
-  container:{
+  mainContainer:{
     width:'80%',
+    height:'100%',
   },
+
   profileTop:{
     
     justifyContent:'space-between',

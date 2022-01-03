@@ -91,7 +91,7 @@ export default function EntryPage({navigation}) {
       <>        
               {!changer
               ? 
-                <SafeAreaView style={style.mainContainer}>
+              <ImageBackground source={{uri:'https://media.istockphoto.com/photos/frame-of-the-shredded-paper-on-white-background-picture-id136339115?k=20&m=136339115&s=612x612&w=0&h=Ej4AFQXz_CBu-UghE0mO_vbxL7Q--u1zSSJ-wqcr25E='}} style={style.mainContainer}>
                   <View style={style.insideBox}>
                   <Text  style={style.gameuserName}>WORD GAME</Text>
                     <GoogleSigninButton
@@ -101,9 +101,10 @@ export default function EntryPage({navigation}) {
                     onPress={signIn}
                     />
                   </View>
-                </SafeAreaView>
+                </ImageBackground>
               :
-                <SafeAreaView style={style.mainContainer}>
+              <ImageBackground source={{uri:'https://media.istockphoto.com/photos/multi-colored-alphabets-frame-background-picture-id1192655057?k=20&m=1192655057&s=612x612&w=0&h=2zieuc7I6mWl1rBPhkMxIlRIY6zsA11vAEizHz9P7SU='}} style={style.mainContainer}>
+
                 <Text  style={style.gameName}>WORD GAME</Text>
                 <View style={style.insideuserNameBox}>
 
@@ -120,7 +121,7 @@ export default function EntryPage({navigation}) {
                 <Text  style={style.buttonSubmit} onPress={exit}>EXIT</Text>
                 </TouchableOpacity>
                 </View>
-                </SafeAreaView>
+              </ImageBackground>
               }
         </>
     )
@@ -160,16 +161,16 @@ const style = StyleSheet.create({
     gameuserName:{
         fontSize:50,
         fontFamily: 'Moo Lah Lah',
-        color:frontPageBackGroundColor,
+        color:frontBigFontColor,
         fontWeight:'bold',
         fontStyle:'italic',
     },
     gameName:{
       position:"absolute",
-      top:30,
+      top:130,
         fontSize:50,
         fontFamily: 'Moo Lah Lah',
-        color:frontPageBackGroundColor,
+        color:frontBigFontColor,
         fontWeight:'bold',
         fontStyle:'italic',
     },

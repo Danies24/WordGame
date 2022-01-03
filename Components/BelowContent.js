@@ -4,7 +4,7 @@ import RoundBtn from './RoundBtn';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAction, undoAction ,nextLevelAction} from '../redux/action';
-import { BelowContentColor, frontBigFontColor } from './Colors';
+import { BelowContentColor, frontBigFontColor, frontPageBackGroundColor } from './Colors';
 
 export default function BelowContent() {
     const data = useSelector((state) => state.wordArray);
@@ -13,7 +13,7 @@ export default function BelowContent() {
         <>
 
             <TouchableOpacity onPress={() => dispatch(undoAction())} style={style.undoContainer} >
-                <FontAwesome5 name={'history'} style={style.undo} size={20} color={BelowContentColor} />
+                <FontAwesome5 name={'history'} size={20} color={BelowContentColor} elevation={3}/>
             </TouchableOpacity>
             {data.map((word, index) =>
                 <ScrollView key={index} style={style.container}>
@@ -43,9 +43,7 @@ export default function BelowContent() {
 }
 const style = StyleSheet.create({
     undoContainer: {
-        flex: 1,
         paddingTop: 20,
-
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
