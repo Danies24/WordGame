@@ -18,7 +18,7 @@ function LevelTwo({route}) {
 
     return (
         <>
-        <ImageBackground source={{uri:'https://cdn.pixabay.com/photo/2020/02/26/19/15/life-is-a-circle-4882586__340.jpg'}} style={style.wholePage}>
+        <ImageBackground source={require('../Images/GameScreen2.jpeg')} resizeMode='cover' style={style.wholePage}>
           <View style={style.mainContainer}>
           <Header />
           </View>
